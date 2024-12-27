@@ -10,9 +10,10 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Dashboard />}>
           <Route index element={<Home />} />
-          {/* Nested routes */}
+          /* Nested routes */
           <Route path="myposts" element={<MyPosts />} />
           <Route path="drafts" element={<div>Drafts Page</div>} />
+          <Route path="articles" element={<div>Articles</div>} />
           <Route path="settings" element={<div>Settings Page</div>} />
         </Route>
       </Routes>

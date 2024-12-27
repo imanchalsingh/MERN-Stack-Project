@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "username": "codeMaster123",
+    "postContent": "Closures are a powerful feature of JavaScript that allows a function to remember the scope in which it was created. In this post, we'll dive into how closures work and why they're useful in real-world coding.",
+    "likes": "1.2M",
+    "comments": "45k",
+    "shares": "3.2k",
+    "views": "3.8M",
+    "tags": ["JavaScript", "Closures", "Programming"]
+  },
+  {
+    "id": 2,
+    "username": "devQueen",
+    "postContent": "TypeScript is a superset of JavaScript that brings optional static typing to the language. In this blog, I'll explain why TypeScript is essential for modern web development and how it can help you write better code.",
+    "likes": "1.5M",
+    "comments": "60k",
+    "shares": "4k",
+    "views": "2M",
+    "tags": ["TypeScript", "JavaScript", "Web Development"]
+  },
+  {
+    "id": 3,
+    "username": "reactPro",
+    "postContent": "React hooks have revolutionized the way we write React components. Here are the top 10 React hooks you must know to build better, cleaner React applications.",
+    "likes": "2M",
+    "comments": "7.5k",
+    "shares": "5k",
+    "views": "3.5M",
+    "tags": ["React", "Hooks", "Frontend Development"]
+  },
+  {
+    "id": 4,
+    "username": "pythonGuru",
+    "postContent": "Machine Learning is one of the most exciting fields in technology today. This post will guide you on how to get started with ML using Python and popular libraries like scikit-learn and TensorFlow.",
+    "likes": "1.8M",
+    "comments": "155k",
+    "shares": "3.5k",
+    "views": "12M",
+    "tags": ["Python", "Machine Learning", "AI"]
+  },
+  {
+    "id": 5,
+    "username": "cssWizard",
+    "postContent": "Both CSS Grid and Flexbox are powerful layout systems, but when should you use which? This post breaks down the key differences and practical use cases for each.",
+    "likes": "1.3M",
+    "comments": "25k",
+    "shares": "3k",
+    "views": "2M",
+    "tags": ["CSS", "Grid", "Flexbox", "Frontend"]
+  },
+  {
+    "id": 6,
+    "username": "angularExpert",
+    "postContent": "Angular is a platform for building web applications with TypeScript. In this article, we’ll cover how Angular's powerful features like Dependency Injection and Directives help build scalable applications.",
+    "likes": "900k",
+    "comments": "30k",
+    "shares": "2k",
+    "views": "1.5M",
+    "tags": ["Angular", "TypeScript", "Web Development"]
+  },
+  {
+    "id": 7,
+    "username": "jsNinja",
+    "postContent": "Async programming in JavaScript is essential for handling operations like file reading or HTTP requests. Here’s how you can make your JavaScript apps more efficient with async/await.",
+    "likes": "800k",
+    "comments": "12k",
+    "shares": "1.2k",
+    "views": "1.8M",
+    "tags": ["JavaScript", "Async", "Programming"]
+  },
+  {
+    "id": 8,
+    "username": "fullStackMaster",
+    "postContent": "A full-stack developer’s guide to building modern web applications using Node.js, Express, React, and MongoDB. Learn the tools and techniques to create a complete application stack.",
+    "likes": "1.1M",
+    "comments": "22k",
+    "shares": "2.5k",
+    "views": "2.5M",
+    "tags": ["Node.js", "Express", "React", "MongoDB", "Full Stack"]
+  },
+  {
+    "id": 9,
+    "username": "devMaster",
+    "postContent": "Version control with Git is a must-have skill for developers. This post walks you through the basics of using Git and GitHub for efficient code collaboration and version management.",
+    "likes": "2.3M",
+    "comments": "50k",
+    "shares": "7k",
+    "views": "10M",
+    "tags": ["Git", "Version Control", "Development"]
+  },
+  {
+    "id": 10,
+    "username": "databaseWizard",
+    "postContent": "SQL vs NoSQL: Which database should you choose for your next project? We’ll compare the strengths and weaknesses of both to help you make the right decision.",
+    "likes": "1.7M",
+    "comments": "40k",
+    "shares": "3.8k",
+    "views": "4M",
+    "tags": ["SQL", "NoSQL", "Database"]
+  },
+  {
+    "id": 11,
+    "username": "cloudGuru",
+    "postContent": "Cloud computing is transforming the way businesses operate. In this post, we dive into the benefits of cloud platforms like AWS, Azure, and Google Cloud, and how they help businesses scale efficiently.",
+    "likes": "2M",
+    "comments": "25k",
+    "shares": "4k",
+    "views": "8M",
+    "tags": ["Cloud Computing", "AWS", "Azure", "Google Cloud"]
+  },
+  {
+    "id": 12,
+    "username": "securityExpert",
+    "postContent": "In today’s world, cybersecurity is a top priority. This article covers essential practices to secure your web applications from common vulnerabilities like XSS and SQL Injection.",
+    "likes": "1.2M",
+    "comments": "15k",
+    "shares": "1.5k",
+    "views": "3M",
+    "tags": ["Cybersecurity", "Web Security", "XSS", "SQL Injection"]
+  },
+  {
+    "id": 13,
+    "username": "uxDesignMaster",
+    "postContent": "User experience (UX) design is crucial for creating websites and apps that people love to use. In this post, we’ll explore UX best practices and how to enhance your product's usability.",
+    "likes": "1.8M",
+    "comments": "35k",
+    "shares": "2.5k",
+    "views": "7M",
+    "tags": ["UX Design", "User Experience", "Web Design"]
+  },
+  {
+    "id": 14,
+    "username": "aiExpert",
+    "postContent": "Artificial Intelligence is revolutionizing industries from healthcare to finance. This post covers the basics of machine learning algorithms and how they are applied in real-world scenarios.",
+    "likes": "3.5M",
+    "comments": "100k",
+    "shares": "10k",
+    "views": "15M",
+    "tags": ["AI", "Machine Learning", "Artificial Intelligence"]
+  },
+  {
+    "id": 15,
+    "username": "devOpsMaster",
+    "postContent": "DevOps is a cultural shift that focuses on collaboration between development and operations teams. Learn the key principles of DevOps and how it improves software delivery processes.",
+    "likes": "1.6M",
+    "comments": "28k",
+    "shares": "4k",
+    "views": "5M",
+    "tags": ["DevOps", "Automation", "Software Development"]
+  },
+  {
+    "id": 16,
+    "username": "mobileDevGuru",
+    "postContent": "Mobile app development is constantly evolving. In this post, we explore the latest trends in mobile development, including cross-platform development and the best tools for building mobile apps.",
+    "likes": "1.4M",
+    "comments": "22k",
+    "shares": "2k",
+    "views": "6M",
+    "tags": ["Mobile Development", "App Development", "Cross-Platform"]
+  },
+  {
+    "id": 17,
+    "username": "gameDevMaster",
+    "postContent": "Game development is an exciting field where creativity meets technology. In this post, we’ll discuss the fundamentals of game development and the best tools for creating interactive experiences.",
+    "likes": "2.2M",
+    "comments": "50k",
+    "shares": "6k",
+    "views": "9M",
+    "tags": ["Game Development", "Unity", "C++"]
+  },
+  {
+    "id": 18,
+    "username": "pythonExpert",
+    "postContent": "Python is a versatile language that is widely used in fields like web development, data science, and machine learning. This post will introduce you to Python’s core concepts and why it’s so popular.",
+    "likes": "3M",
+    "comments": "80k",
+    "shares": "7k",
+    "views": "12M",
+    "tags": ["Python", "Programming", "Data Science"]
+  },
+  {
+    "id": 19,
+    "username": "backendGuru",
+    "postContent": "Building scalable backend systems is key to the success of any application. In this post, we’ll explore different architecture patterns, from monolithic to microservices, and when to use them.",
+    "likes": "1.7M",
+    "comments": "33k",
+    "shares": "4.5k",
+    "views": "5.5M",
+    "tags": ["Backend Development", "Microservices", "Architecture"]
+  },
+  {
+    "id": 20,
+    "username": "blockchainPro",
+    "postContent": "Blockchain technology is changing the way we think about data security and decentralization. This post will walk you through the basics of blockchain and its applications in various industries.",
+    "likes": "2.5M",
+    "comments": "65k",
+    "shares": "8k",
+    "views": "10M",
+    "tags": ["Blockchain", "Cryptocurrency", "Decentralization"]
+  }
+]

@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, useNavigate } from "react-router-dom"; // Import Outlet for rendering nested routes
+import { Outlet, useNavigate } from "react-router-dom";
 import BlogifyLogo from "./Blogify.png";
 
 const Dashboard: React.FC = () => {
@@ -8,7 +8,6 @@ const Dashboard: React.FC = () => {
   return (
     <div className="container">
       <div className="blog-page">
-        {/* Upper Navbar */}
         <div className="uppar-nav-bar">
           <div className="logo-n-searchbar">
             <div className="logo">
@@ -28,7 +27,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         <div className="page-container" style={{ display: "flex" }}>
-          <div className="left-nav" style={{ width: "250px", padding: "10px" }}>
+          <div className="left-nav" style={{ padding: "10px" }}>
             <p onClick={() => navigate("/myposts")}>My Posts</p>
             <p onClick={() => navigate("/articles")}>Articles</p>
             <p onClick={() => navigate("/drafts")}>Drafts</p>
