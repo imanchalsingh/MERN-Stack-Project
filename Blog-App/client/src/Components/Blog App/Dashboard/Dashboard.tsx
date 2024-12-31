@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import BlogifyLogo from "./Blogify.png";
+import { MessageOutlined, NotificationAddOutlined } from "@mui/icons-material";
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
@@ -19,9 +20,15 @@ const Dashboard: React.FC = () => {
           </div>
           <div className="profile-n-notification">
             <div className="right-side-uppar-nav">
-              <div className="message">M</div>
-              <div className="notification">N</div>
-              <div className="account">A</div>
+              <div className="message">
+                <MessageOutlined />
+              </div>
+              <div className="notification">
+                <NotificationAddOutlined />
+              </div>
+              <div className="account login" onClick={() => navigate("/login") ? "Sign in" : "Sign out"}>
+                Sign in
+              </div>
             </div>
           </div>
         </div>
@@ -34,7 +41,7 @@ const Dashboard: React.FC = () => {
             <p onClick={() => navigate("/settings")}>Settings</p>
           </div>
 
-          <div className="route-page" style={{  padding: "20px" }}>
+          <div className="route-page" style={{ padding: "20px" }}>
             <Outlet />
           </div>
         </div>
