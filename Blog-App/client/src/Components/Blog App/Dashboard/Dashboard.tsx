@@ -2,9 +2,17 @@ import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import BlogifyLogo from "./Blogify.png";
 import { MessageOutlined, NotificationAddOutlined } from "@mui/icons-material";
+import { useAuth } from "../../Auth/AuthContext"; // Import the useAuth hook
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
+  const { isLoggedIn, setIsLoggedIn } = useAuth(); // Track login state
+
+  const handleSignOut = () => {
+    setIsLoggedIn(false); // Set isLoggedIn to false
+    localStorage.setItem("isLoggedIn", "false"); // Update localStorage for persistence
+    navigate("/login"); // Redirect to login after signing out
+  };
 
   return (
     <div className="container">
@@ -26,15 +34,18 @@ const Dashboard: React.FC = () => {
               <div className="notification">
                 <NotificationAddOutlined />
               </div>
-              <div className="account login" onClick={() => navigate("/login") ? "Sign in" : "Sign out"}>
-                Sign in
+              <div
+                className="account login"
+                onClick={isLoggedIn ? handleSignOut : () => navigate("/login")}
+              >
+                {isLoggedIn ? "Sign out" : "Sign in"}
               </div>
             </div>
           </div>
         </div>
 
         <div className="page-container" style={{ display: "flex" }}>
-          <div className="left-nav" style={{ padding: "10px" }}>
+          <div className="left-nav">
             <p onClick={() => navigate("/myposts")}>My Posts</p>
             <p onClick={() => navigate("/articles")}>Articles</p>
             <p onClick={() => navigate("/drafts")}>Drafts</p>

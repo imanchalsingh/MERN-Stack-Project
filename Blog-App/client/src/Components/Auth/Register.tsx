@@ -24,7 +24,7 @@ const Register: React.FC = () => {
       console.log("Success:", data);
 
       if (data.status === "ok") {
-        navigate("/");
+        navigate("/dashboard");
       } else {
         alert("Failed to register. Please try again.");
       }

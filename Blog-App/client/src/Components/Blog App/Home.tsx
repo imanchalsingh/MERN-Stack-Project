@@ -3,6 +3,8 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ShareIcon from "@mui/icons-material/Share";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
+
 interface Post {
   id: number;
   username: string;
@@ -12,32 +14,122 @@ interface Post {
   shares: number;
   views: number;
 }
-
+interface User {
+  id: number;
+  username: string;
+  views: number;
+  description: string;
+}
 const App: React.FC = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]); // For fetching trending posts
+  const [topPosts, setTopPosts] = useState<User[]>([]); // For fetching top posts
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/posts");
-        const data = await response.json();
-        setPosts(data); // Storing data in the state
+        // Fetching data for trending posts
+        const responsePosts = await fetch("http://localhost:5000/api/posts");
+        if (!responsePosts.ok) {
+          throw new Error("Failed to fetch posts");
+        }
+        const dataPosts = await responsePosts.json();
+        setPosts(dataPosts); // Storing data for trending posts in state
+
+        // Fetching data for top posts
+        const responseTopPosts = await fetch(
+          "http://localhost:5000/api/top/user"
+        );
+        if (!responseTopPosts.ok) {
+          throw new Error("Failed to fetch top posts");
+        }
+        const dataTopPosts = await responseTopPosts.json();
+        setTopPosts(dataTopPosts); // Storing data for top posts in state
       } catch (error) {
-        console.error("Error fetching data:", error);
+        setError("Error fetching data: " + error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, []); // Empty dependency array means this runs once when the component mounts
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="home-page-container">
-      <h3>Top 2 Posts</h3>
-      <div className="top-2-posts">
-        <div className="top-1st-post"></div>
-        <div className="top-2nd-post"></div>
+      <h3>Top Users</h3>
+      <div className="top-posts">
+        {topPosts.map((post) => (
+          <div key={post.id} className="top-post">
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexDirection: "row",
+                width: "100%",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                }}
+              >
+                <h3 className="user-profile-letter">
+                  {[...post.username][0].toUpperCase()}
+                </h3>
+                <h4>{post.username}</h4>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  paddingRight:"5px"
+                }}
+              >
+                <p>{post.views}</p>
+                <VolunteerActivismIcon
+                  sx={{
+                    fontSize: "20px",
+                    color: "#278e50",
+                  }}
+                />
+              </div>
+            </div>
+            <div
+              style={{
+                marginTop: "-5px",
+                textAlign: "center",
+              }}
+            >
+              <p style={{ fontSize: "small" }}>{post.description}</p>
+              <button
+                style={{
+                  width: "300px",
+                  backgroundColor: "#278e50",
+                  textAlign: "center",
+                }}
+              >
+                View Profile
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
-      <h3>Trending</h3>
+
+      <h3>Trending Posts</h3>
       <div className="trending-posts">
         {posts.map((post) => (
           <div key={post.id} className="post">

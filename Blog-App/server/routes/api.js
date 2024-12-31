@@ -5,9 +5,13 @@ const cors = require("cors");
 app.use(cors());
 
 const posts = require("../JSON-Data/postsData.json");
+const topPosts = require("../JSON-Data/topUserData.json");
 
 app.get("/api/posts", (req, res) => {
   res.json(posts);
+});
+app.get("/api/top/user", (req, res) => {
+  res.json(topPosts);
 });
 
 app.listen(PORT, () => {

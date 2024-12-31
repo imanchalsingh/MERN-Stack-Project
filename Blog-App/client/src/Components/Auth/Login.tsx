@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext"; // Import the useAuth hook
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
 
   const LoginUser = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,7 +25,8 @@ const Login: React.FC = () => {
 
       const data = await response.json();
       console.log("Login successful:", data);
-      navigate("/");
+      navigate("/dashboard");
+      setIsLoggedIn(true);
     } catch (error) {
       console.error("Login failed:", error);
       alert("Login failed. Please check your credentials and try again.");

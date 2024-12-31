@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "username": "webDevMaster",
+    "views": "4M",
+    "description": "Expert in web development."
+  },
+  {
+    "id": 2,
+    "username": "frontendGuru",
+    "views": "6M",
+    "description": "Front-end frameworks specialist."
+  },
+  {
+    "id": 3,
+    "username": "typescriptPro",
+    "views": "8M",
+    "description": "TypeScript application expert."
+  },
+  {
+    "id": 4,
+    "username": "aiDev",
+    "views": "11M",
+    "description": "AI and ML innovator."
+  },
+  {
+    "id": 5,
+    "username": "javaExpert",
+    "views": "4.5M",
+    "description": "Java coding professional."
+  },
+  {
+    "id": 6,
+    "username": "nodeJsMaster",
+    "views": "9M",
+    "description": "Node.js backend specialist."
+  },
+  {
+    "id": 7,
+    "username": "reactDeveloper",
+    "views": "7M",
+    "description": "React UI developer."
+  },
+  {
+    "id": 8,
+    "username": "vueJsExpert",
+    "views": "5.5M",
+    "description": "Vue.js app builder."
+  },
+  {
+    "id": 9,
+    "username": "devOpsGuru",
+    "views": "5M",
+    "description": "DevOps automation expert."
+  },
+  {
+    "id": 10,
+    "username": "securityMaster",
+    "views": "7M",
+    "description": "Web security professional."
+  },
+  {
+    "id": 11,
+    "username": "cloudMaster",
+    "views": "9M",
+    "description": "Cloud deployment specialist."
+  },
+  {
+    "id": 12,
+    "username": "mobileDevPro",
+    "views": "6.5M",
+    "description": "Cross-platform app developer."
+  },
+  {
+    "id": 13,
+    "username": "gameDevExpert",
+    "views": "8M",
+    "description": "Unity game developer."
+  },
+  {
+    "id": 14,
+    "username": "databaseGuru",
+    "views": "6M",
+    "description": "SQL and NoSQL expert."
+  },
+  {
+    "id": 15,
+    "username": "blockchainGuru",
+    "views": "10.5M",
+    "description": "Blockchain technology specialist."
+  },
+  {
+    "id": 16,
+    "username": "pythonMaster",
+    "views": "9M",
+    "description": "Python development professional."
+  },
+  {
+    "id": 17,
+    "username": "fullStackGuru",
+    "views": "8.5M",
+    "description": "Full-stack development expert."
+  },
+  {
+    "id": 18,
+    "username": "frontendDevMaster",
+    "views": "4.5M",
+    "description": "CSS and JavaScript pro."
+  },
+  {
+    "id": 19,
+    "username": "dataSciencePro",
+    "views": "7.5M",
+    "description": "Data science specialist."
+  },
+  {
+    "id": 20,
+    "username": "automationExpert",
+    "views": "8M",
+    "description": "Automation scripting expert."
+  }
+]
