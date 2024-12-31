@@ -19,7 +19,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/posts");
+        const response = await fetch("http://localhost:5000/api/posts");
         const data = await response.json();
         setPosts(data); // Storing data in the state
       } catch (error) {

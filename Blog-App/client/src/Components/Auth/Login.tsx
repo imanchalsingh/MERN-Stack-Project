@@ -11,7 +11,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
+      const response = await fetch("http://localhost:3000/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -23,7 +23,7 @@ const Login: React.FC = () => {
 
       const data = await response.json();
       console.log("Login successful:", data);
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       console.error("Login failed:", error);
       alert("Login failed. Please check your credentials and try again.");

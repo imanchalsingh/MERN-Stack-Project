@@ -267,3 +267,13 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.login {
+  background-color: #278e50;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.login:hover {
+  background-color: #1a733e;
+}

@@ -10,7 +10,7 @@ const Register: React.FC = () => {
     e.preventDefault(); // Prevent default form behavior
 
     try {
-      const response = await fetch("http://localhost:5000/api/register", {
+      const response = await fetch("http://localhost:3000/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
@@ -21,10 +21,10 @@ const Register: React.FC = () => {
       }
 
       const data = await response.json();
-      console.log("Success:", data); // Log the response data
+      console.log("Success:", data);
 
       if (data.status === "ok") {
-        navigate("/dashboard"); // Navigate to Dashboard on successful registration
+        navigate("/");
       } else {
         alert("Failed to register. Please try again.");
       }
@@ -36,14 +36,6 @@ const Register: React.FC = () => {
 
   return (
     <div>
-      <div
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, #e6d802, #19c051,#485061,#63cdf6,#f24b03,#494547,#da3fa6,#40275a,#681e26)",
-          width: "100%",
-          height: "10px",
-        }}
-      ></div>
       <div
         style={{
           display: "flex",
