@@ -1,9 +1,10 @@
-// AuthContext.tsx
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
 interface AuthContextType {
   isLoggedIn: boolean;
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  username: string | null; // Add username to the context
+  setAuthUsername: React.Dispatch<React.SetStateAction<string | null>>; // Function to update username
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -22,18 +23,27 @@ export const useAuth = (): AuthContextType => {
 };
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  // Check if user is logged in from localStorage
+  // Retrieve login state and username from localStorage
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
     return localStorage.getItem("isLoggedIn") === "true";
+  });
+
+  const [username, setAuthUsername] = useState<string | null>(() => {
+    return localStorage.getItem("username");
   });
 
   useEffect(() => {
     // Sync state with localStorage whenever it changes
     localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
-  }, [isLoggedIn]);
+    if (username) {
+      localStorage.setItem("username", username); // Store username in localStorage
+    }
+  }, [isLoggedIn, username]);
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+    <AuthContext.Provider
+      value={{ isLoggedIn, setIsLoggedIn, username, setAuthUsername }}
+    >
       {children}
     </AuthContext.Provider>
   );

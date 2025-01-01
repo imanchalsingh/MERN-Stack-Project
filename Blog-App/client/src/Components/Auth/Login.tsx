@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext"; // Import the useAuth hook
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { setIsLoggedIn } = useAuth();
+  const { setIsLoggedIn, setAuthUsername } = useAuth();
   const navigate = useNavigate();
 
   const LoginUser = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,7 +16,7 @@ const Login: React.FC = () => {
       const response = await fetch("http://localhost:3000/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, password }),
       });
 
       if (!response.ok) {
@@ -25,8 +25,9 @@ const Login: React.FC = () => {
 
       const data = await response.json();
       console.log("Login successful:", data);
-      navigate("/dashboard");
-      setIsLoggedIn(true);
+      setAuthUsername(username); // Set the username to be used across the app
+      setIsLoggedIn(true); // Set the logged-in state to true
+      navigate("/dashboard"); // Redirect to the dashboard
     } catch (error) {
       console.error("Login failed:", error);
       alert("Login failed. Please check your credentials and try again.");
@@ -93,11 +94,11 @@ const Login: React.FC = () => {
                 paddingLeft: "10px",
                 marginTop: "20px",
               }}
-              type="email"
-              name="Email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              name="Username"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
             <input

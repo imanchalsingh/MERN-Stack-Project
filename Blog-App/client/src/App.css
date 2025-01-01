@@ -299,3 +299,46 @@ button:hover {
 /* Wrap-up dashboard */
 
 /* MyPosts Styles */
+
+.mypost-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.create-btn {
+  background-color: #278e50;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  position: absolute;
+  width: 8%;
+  right: 0;
+}
+.create-btn:hover {
+  background-color: #1a733e;
+}
+.my-posts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.username-profile-letter {
+  color: #ffffff;
+  border: 3px solid #278e50;
+  height: 25px;
+  width: 25px;
+  text-align: center;
+  border-radius: 50%;
+  margin-left: 10px;
+  cursor: pointer;
+  background-color: #278e50;
+}
