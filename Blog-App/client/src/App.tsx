@@ -8,7 +8,7 @@ import Home from "./Components/Blog App/Home";
 import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
 import { AuthProvider } from "./Components/Auth/AuthContext"; // Import AuthProvider
-import CreatePost from "./Components/Blog App/my post/CreatePost";
+import Draft from "./Components/Blog App/Draft";
 
 const App: React.FC = () => {
   return (
@@ -19,10 +19,8 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Dashboard />}>
             <Route index element={<Home />} />
-            <Route path="myposts" element={<MyPosts />}>
-              <Route path="create" element={<CreatePost />} />
-            </Route>
-            <Route path="drafts" element={<div>Drafts Page</div>} />
+            <Route path="/myposts" element={<MyPosts />} />
+            <Route path="drafts" element={<Draft />} />
             <Route path="articles" element={<div>Articles</div>} />
             <Route path="settings" element={<div>Settings Page</div>} />
           </Route>
