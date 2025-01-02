@@ -8,14 +8,14 @@ interface Post {
   isDraft: boolean;
 }
 
-const Drafts: React.FC = () => {
+const Archive: React.FC = () => {
   const [draftPosts, setDraftPosts] = useState<Post[]>([]); // Use the Post type here
 
   // Fetch draft posts from localStorage
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem("posts") || "[]");
-    const drafts = storedPosts.filter((post: Post) => post.isDraft);
-    setDraftPosts(drafts);
+    const archive = storedPosts.filter((post: Post) => post.isDraft);
+    setDraftPosts(archive);
   }, []);
 
   // Handle deleting draft posts
@@ -61,7 +61,7 @@ const Drafts: React.FC = () => {
           Draft Posts
         </h2>
         {draftPosts.length === 0 ? (
-          <p style={{ textAlign: "center", color: "#888" }}>No drafts yet.</p>
+          <p style={{ textAlign: "center", color: "#888" }}>No archive yet.</p>
         ) : (
           <div style={{ marginTop: "20px" }}>
             {draftPosts.map((post) => (
@@ -116,4 +116,4 @@ const Drafts: React.FC = () => {
   );
 };
 
-export default Drafts;
+export default Archive;
