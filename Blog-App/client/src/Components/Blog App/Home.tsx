@@ -116,6 +116,7 @@ const App: React.FC = () => {
             >
               <p style={{ fontSize: "small" }}>{post.description}</p>
               <button
+              className="view-profile-btn"
                 style={{
                   width: "300px",
                   backgroundColor: "#278e50",

@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 // Define the structure of a Post
 interface Post {
   id: number;
-  title: string;
   content: string;
   isDraft: boolean;
 }
 
 const Archive: React.FC = () => {
   const [draftPosts, setDraftPosts] = useState<Post[]>([]); // Use the Post type here
+  const [username, setUsername] = useState<string>("");
 
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
   // Fetch draft posts from localStorage
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem("posts") || "[]");
@@ -37,18 +44,16 @@ const Archive: React.FC = () => {
         alignItems: "center",
         fontFamily: "'Poppins', sans-serif",
         padding: "20px",
-        minHeight: "100vh",
-        backgroundColor: "#f9f9f9",
+        width: "100%",
+        height: "90%",
       }}
     >
       <div
         style={{
-          width: "80%",
-          maxWidth: "1000px",
+          width: "100%",
           padding: "30px",
           borderRadius: "10px",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-          backgroundColor: "#fff",
+          height: "100%",
         }}
       >
         <h2
@@ -58,57 +63,72 @@ const Archive: React.FC = () => {
             color: "#333",
           }}
         >
-          Draft Posts
+          Archive Posts
         </h2>
         {draftPosts.length === 0 ? (
           <p style={{ textAlign: "center", color: "#888" }}>No archive yet.</p>
         ) : (
-          <div style={{ marginTop: "20px" }}>
-            {draftPosts.map((post) => (
-              <div
-                key={post.id}
-                style={{
-                  borderBottom: "1px solid #ddd",
-                  paddingBottom: "20px",
-                  marginBottom: "20px",
-                }}
-              >
+          <div style={{ width: "100%", overflowY: "auto", height: "70vh" }}>
+            <div
+              style={{
+                marginTop: "20px",
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "10px",
+                width: "100%",
+              }}
+            >
+              {draftPosts.map((post) => (
                 <div
+                  key={post.id}
                   style={{
-                    display: "flex",
-                    justifyContent: "space-between",
                     alignItems: "center",
-                    marginBottom: "10px",
+                    padding: "20px",
+                    border: "1px solid #ddd",
+                    borderRadius: "8px",
+                    backgroundColor: "#2d945d4c",
+                    color: "#312513",
+                    width: "90%",
                   }}
                 >
-                  <h3
+                  <div
                     style={{
-                      margin: 0,
-                      color: "#333",
-                      fontSize: "18px",
-                      fontWeight: "bold",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      marginBottom: "10px",
                     }}
                   >
-                    {post.title}
-                  </h3>
-                  <button
-                    onClick={() => handleDelete(post.id)}
-                    style={{
-                      padding: "8px 12px",
-                      backgroundColor: "#ff4d4f",
-                      color: "#fff",
-                      border: "none",
-                      borderRadius: "5px",
-                      cursor: "pointer",
-                      fontSize: "14px",
-                    }}
-                  >
-                    Delete
-                  </button>
+                    {/* Display the username here */}
+                    <p
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                        color: "#555",
+                      }}
+                    >
+                      {username ? `@ ${username}` : "Anonymous"}
+                    </p>
+                    <DeleteIcon
+                      onClick={() => handleDelete(post.id)}
+                      sx={{
+                        background: "transparent",
+                        color: "#f44336",
+                        border: "2px solid #f44336",
+                        padding: "5px",
+                        cursor: "pointer",
+                        fontSize: "14px",
+                        borderRadius: "50%",
+                        marginTop: "10px",
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <p style={{ fontSize: "14px" }}>{post.content}</p>
+                  </div>
                 </div>
-                <p style={{ color: "#555", fontSize: "14px" }}>{post.content}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
       </div>
