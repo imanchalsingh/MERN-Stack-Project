@@ -183,7 +183,12 @@ const MyPosts: React.FC = () => {
       ) : (
         <div
           className="post-list"
-          style={{ display: "flex", flexDirection: "column", gap: "15px", marginTop:"5%" }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "15px",
+            marginTop: "5%",
+          }}
         >
           {posts.map(
             (post) =>
@@ -198,7 +203,6 @@ const MyPosts: React.FC = () => {
                     backgroundColor: "#fff",
                     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
                     position: "relative",
-                   
                   }}
                 >
                   <div
@@ -215,7 +219,7 @@ const MyPosts: React.FC = () => {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        marginTop:"-20px"
+                        marginTop: "-20px",
                       }}
                     >
                       <h3 className="user-profile-letter">
@@ -271,7 +275,14 @@ const MyPosts: React.FC = () => {
                       />
                     </div>
                   </div>
-                  <p style={{ fontSize: "16px", color: "#555",marginTop:"-20px",marginLeft:"10px"}}>
+                  <p
+                    style={{
+                      fontSize: "16px",
+                      color: "#555",
+                      marginTop: "-20px",
+                      marginLeft: "10px",
+                    }}
+                  >
                     {post.content}
                   </p>
                 </div>
