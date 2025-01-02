@@ -48,7 +48,7 @@ const Dashboard: React.FC = () => {
           <div className="left-nav">
             <p onClick={() => navigate("/myposts")}>My Posts</p>
             <p onClick={() => navigate("/articles")}>Articles</p>
-            <p onClick={() => navigate("/drafts")}>Drafts</p>
+            <p onClick={() => navigate("/archive")}>Archive</p>
             <p onClick={() => navigate("/settings")}>Settings</p>
           </div>
 
