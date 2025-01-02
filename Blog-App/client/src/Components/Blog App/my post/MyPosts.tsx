@@ -197,6 +197,8 @@ const MyPosts: React.FC = () => {
                     borderRadius: "8px",
                     backgroundColor: "#fff",
                     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                    position: "relative",
+                    marginTop:"5%"
                   }}
                 >
                   <div
@@ -213,6 +215,7 @@ const MyPosts: React.FC = () => {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
+                        marginTop:"-20px"
                       }}
                     >
                       <h3 className="user-profile-letter">
@@ -223,6 +226,7 @@ const MyPosts: React.FC = () => {
                           fontSize: "18px",
                           fontWeight: "bold",
                           color: "#333",
+                          marginLeft: "10px",
                         }}
                       >
                         {post.username}
@@ -231,37 +235,43 @@ const MyPosts: React.FC = () => {
 
                     <div
                       className="post-actions"
-                      style={{ display: "flex", flexDirection: "row" }}
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        position: "absolute",
+                        top: 10,
+                        right: 10,
+                      }}
                     >
-                      <button
+                      <ArchiveIcon
                         onClick={() => handleDraft(post.id)}
-                        style={{
-                          background: "#f0f0f0",
-                          border: "1px solid #ddd",
-                          padding: "5px 10px",
-                          marginRight: "10px",
-                          cursor: "pointer",
+                        sx={{
                           fontSize: "14px",
+                          background: "transparent",
+                          color: "#278e50",
+                          border: "2px solid #278e50",
+                          padding: "5px",
+                          cursor: "pointer",
+                          borderRadius: "50%",
                         }}
-                      >
-                        <ArchiveIcon />
-                      </button>
-                      <button
+                      />
+
+                      <DeleteIcon
                         onClick={() => handleDelete(post.id)}
-                        style={{
-                          background: "#f44336",
-                          color: "#fff",
-                          border: "1px solid #ddd",
-                          padding: "5px 10px",
+                        sx={{
+                          background: "transparent",
+                          color: "#f44336",
+                          border: "2px solid #f44336",
+                          padding: "5px",
                           cursor: "pointer",
                           fontSize: "14px",
+                          borderRadius: "50%",
+                          marginLeft: "10px",
                         }}
-                      >
-                        <DeleteIcon />
-                      </button>
+                      />
                     </div>
                   </div>
-                  <p style={{ fontSize: "16px", color: "#555" }}>
+                  <p style={{ fontSize: "16px", color: "#555",marginTop:"-20px",marginLeft:"10px"}}>
                     {post.content}
                   </p>
                 </div>
