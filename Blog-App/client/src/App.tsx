@@ -9,6 +9,7 @@ import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
 import { AuthProvider } from "./Components/Auth/AuthContext"; // Import AuthProvider
 import Archive from "./Components/Blog App/Archive";
+import Articles from "./Components/Blog App/Articles.tsx";
 
 const App: React.FC = () => {
   return (
@@ -21,7 +22,7 @@ const App: React.FC = () => {
             <Route index element={<Home />} />
             <Route path="/myposts" element={<MyPosts />} />
             <Route path="/archive" element={<Archive />} />
-            <Route path="articles" element={<div>Articles</div>} />
+            <Route path="articles" element={<Articles />} />
             <Route path="settings" element={<div>Settings Page</div>} />
           </Route>
           <Route path="/login" element={<Login />}></Route>

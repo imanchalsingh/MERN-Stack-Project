@@ -49,14 +49,15 @@
   display: flex;
   justify-content: right;
   color: #fff;
-  width: 20%;
+  width: 10%;
 }
 
 .right-side-uppar-nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   width: 100%;
+  right: 0;
 }
 
 .left-nav {

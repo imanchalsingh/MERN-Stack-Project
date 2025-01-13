@@ -1,7 +1,6 @@
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import BlogifyLogo from "./Blogify.png";
-import { MessageOutlined, NotificationAddOutlined } from "@mui/icons-material";
 import { useAuth } from "../../Auth/AuthContext"; // Import the useAuth hook
 
 const Dashboard: React.FC = () => {
@@ -28,12 +27,6 @@ const Dashboard: React.FC = () => {
           </div>
           <div className="profile-n-notification">
             <div className="right-side-uppar-nav">
-              <div className="message">
-                <MessageOutlined />
-              </div>
-              <div className="notification">
-                <NotificationAddOutlined />
-              </div>
               <div
                 className="account login"
                 onClick={isLoggedIn ? handleSignOut : () => navigate("/login")}
