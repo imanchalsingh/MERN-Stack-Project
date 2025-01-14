@@ -6,10 +6,15 @@ import { useAuth } from "../../Auth/AuthContext"; // Import the useAuth hook
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const { isLoggedIn, setIsLoggedIn } = useAuth(); // Track login state
+  const { isRegistered, setIsRegistered } = useAuth(); // Track login state
 
   const handleSignOut = () => {
     setIsLoggedIn(false); // Set isLoggedIn to false
-    localStorage.setItem("isLoggedIn", "false"); // Update localStorage for persistence
+    setIsRegistered(false); // Set isLoggedIn to false
+
+    localStorage.setItem("isLoggedIn", "false");
+    localStorage.setItem("isRegistered", "false"); // Update localStorage for persistence
+    // Update localStorage for persistence
     navigate("/login"); // Redirect to login after signing out
   };
 
@@ -19,7 +24,11 @@ const Dashboard: React.FC = () => {
         <div className="uppar-nav-bar">
           <div className="logo-n-searchbar">
             <div className="logo">
-              <img src={BlogifyLogo} alt="Blogify Logo" />
+              <img
+                src={BlogifyLogo}
+                alt="Blogify Logo"
+                onClick={() => navigate("/")}
+              />
             </div>
             <div className="search-bar">
               <input type="search" placeholder="Search here" />
@@ -31,7 +40,7 @@ const Dashboard: React.FC = () => {
                 className="account login"
                 onClick={isLoggedIn ? handleSignOut : () => navigate("/login")}
               >
-                {isLoggedIn ? "Sign out" : "Sign in"}
+                {isLoggedIn || isRegistered ? "Sign out" : "Sign in"}
               </div>
             </div>
           </div>

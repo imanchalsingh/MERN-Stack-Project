@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
 const Register: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setIsRegistered } = useAuth();
   const navigate = useNavigate();
   const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent default form behavior
@@ -24,6 +26,7 @@ const Register: React.FC = () => {
       console.log("Success:", data);
 
       if (data.status === "ok") {
+        setIsRegistered(true);
         navigate("/dashboard");
       } else {
         alert("Failed to register. Please try again.");

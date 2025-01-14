@@ -26,11 +26,14 @@ const ArticlePage: React.FC = () => {
       {/* Header */}
       <header
         style={{
-          background: "linear-gradient(90deg, #3b2d18, #278e50)",
           color: "white",
           padding: "15px",
           textAlign: "center",
           borderRadius: "8px",
+          backgroundImage:
+            "url('https://bestanimations.com/Nature/winter/winter-snow-nature-animated-gif-30.gif')",
+          backgroundSize: "cover",
+          fontWeight: "bold",
         }}
       >
         <h1>Article Title</h1>
@@ -54,7 +57,7 @@ const ArticlePage: React.FC = () => {
               }}
             />
             <div>
-              <p style={{ margin: "0", fontWeight: "bold" }}>John Doe</p>
+              <p style={{ margin: "0", fontWeight: "bold" }}>Alice</p>
               <p style={{ margin: "0", color: "#555" }}>
                 Published on: January 13, 2025
               </p>
