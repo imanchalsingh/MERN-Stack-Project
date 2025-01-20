@@ -197,6 +197,10 @@
   cursor: pointer;
   color: #363636;
 }
+.likes:active {
+  color: #363636;
+}
+
 .comments {
   display: flex;
   justify-content: center;
