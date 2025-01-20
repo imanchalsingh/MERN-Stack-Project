@@ -50,7 +50,7 @@ const Login: React.FC = () => {
       >
         <div
           style={{
-            background: "#e0e5ec",
+            background: "#3125132d",
             borderRadius: "12px",
             padding: "15px 20px",
             width: "450px",
@@ -127,7 +127,7 @@ const Login: React.FC = () => {
                 width: "100px",
                 height: "30px",
                 borderRadius: "2px",
-                background: "#333",
+                background: "#278e50",
                 color: "#fff",
                 border: "none",
                 outline: "none",
@@ -142,7 +142,10 @@ const Login: React.FC = () => {
             </button>
           </form>
           <p style={{ position: "absolute", bottom: "0" }}>
-            Don't have an account? <a href="/register">Register</a>
+            Don't have an account?{" "}
+            <a style={{ color: "#278e50" }} href="/register">
+              Register
+            </a>
           </p>
         </div>
       </div>

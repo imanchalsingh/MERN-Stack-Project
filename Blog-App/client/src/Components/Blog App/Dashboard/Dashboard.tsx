@@ -51,7 +51,7 @@ const Dashboard: React.FC = () => {
             <p onClick={() => navigate("/myposts")}>My Posts</p>
             <p onClick={() => navigate("/articles")}>Articles</p>
             <p onClick={() => navigate("/archive")}>Archive</p>
-            <p onClick={() => navigate("/settings")}>Settings</p>
+            <p onClick={() => navigate("/likedpost")}>Liked Posts</p>
           </div>
 
           <div className="route-page" style={{ padding: "20px" }}>

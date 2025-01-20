@@ -25,7 +25,6 @@ const App: React.FC = () => {
   const [topPosts, setTopPosts] = useState<User[]>([]); // For fetching top posts
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -96,7 +95,7 @@ const App: React.FC = () => {
                   display: "flex",
                   alignItems: "center",
                   gap: "5px",
-                  paddingRight:"5px"
+                  paddingRight: "5px",
                 }}
               >
                 <p>{post.views}</p>
@@ -116,14 +115,14 @@ const App: React.FC = () => {
             >
               <p style={{ fontSize: "small" }}>{post.description}</p>
               <button
-              className="view-profile-btn"
+                className="view-profile-btn"
                 style={{
                   width: "300px",
                   backgroundColor: "#278e50",
                   textAlign: "center",
                 }}
               >
-                View Profile
+                View Their Journey
               </button>
             </div>
           </div>
@@ -153,7 +152,7 @@ const App: React.FC = () => {
                   />
                 </div>
                 <div className="comments">
-                  <p>{post.comments}</p>
+                  <p>{post.shares}</p>
                   <ChatBubbleOutlineIcon
                     sx={{
                       fontSize: "20px",
@@ -163,7 +162,7 @@ const App: React.FC = () => {
                   />
                 </div>
                 <div className="shares">
-                  <p>{post.shares}</p>
+                  <p>{post.comments}</p>
                   <ShareIcon
                     sx={{
                       fontSize: "20px",
