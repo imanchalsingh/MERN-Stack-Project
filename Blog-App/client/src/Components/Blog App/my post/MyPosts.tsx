@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import DeleteIcon from "@mui/icons-material/Delete";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 
 interface Post {
   id: number;
@@ -76,6 +77,16 @@ const MyPosts: React.FC = () => {
     );
     setPosts(updatedPosts);
     localStorage.setItem("posts", JSON.stringify(updatedPosts));
+  };
+
+  // Handle post like action
+  const handleLike = (id: number) => {
+    const likedPost = posts.find((post) => post.id === id);
+    if (likedPost) {
+      const likedPosts = JSON.parse(localStorage.getItem("likedPosts") || "[]");
+      likedPosts.push(likedPost);
+      localStorage.setItem("likedPosts", JSON.stringify(likedPosts));
+    }
   };
 
   return (
@@ -271,6 +282,16 @@ const MyPosts: React.FC = () => {
                           fontSize: "14px",
                           borderRadius: "50%",
                           marginLeft: "10px",
+                        }}
+                      />
+
+                      <ThumbUpOffAltIcon
+                        onClick={() => handleLike(post.id)}
+                        sx={{
+                          fontSize: "20px",
+                          marginLeft: "5px",
+                          color: "#278e50",
+                          cursor: "pointer",
                         }}
                       />
                     </div>
