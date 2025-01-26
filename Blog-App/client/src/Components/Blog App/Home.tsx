@@ -4,6 +4,7 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ShareIcon from "@mui/icons-material/Share";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
+import { useLikedPosts } from "./LikedPostContext";
 
 interface Post {
   id: number;
@@ -13,6 +14,7 @@ interface Post {
   comments: number;
   shares: number;
   views: number;
+  isDraft: boolean;
 }
 interface User {
   id: number;
@@ -25,6 +27,7 @@ const App: React.FC = () => {
   const [topPosts, setTopPosts] = useState<User[]>([]); // For fetching top posts
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
+  const { likedPosts, addLikedPost } = useLikedPosts();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -63,6 +66,12 @@ const App: React.FC = () => {
     return <div>{error}</div>;
   }
 
+  const handleLike = (post: Post) => {
+    if (!likedPosts.some((likedPost) => likedPost.id === post.id)) {
+      addLikedPost(post);
+    }
+  };
+  console.log(likedPosts);
   return (
     <div className="home-page-container">
       <h3>Top Users</h3>
@@ -144,10 +153,20 @@ const App: React.FC = () => {
                 <div className="likes">
                   <p>{post.likes}</p>
                   <ThumbUpOffAltIcon
+                    onClick={() => handleLike(post)}
                     sx={{
                       fontSize: "20px",
                       marginLeft: "5px",
-                      color: "#278e50",
+                      color: likedPosts.some(
+                        (likedPost) => likedPost.id === post.id
+                      )
+                        ? "#3b2d18"
+                        : "#278e50",
+                      cursor: likedPosts.some(
+                        (likedPost) => likedPost.id === post.id
+                      )
+                        ? "default"
+                        : "pointer",
                     }}
                   />
                 </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import BlogifyLogo from "./Blogify.png";
 import { useAuth } from "../../Auth/AuthContext"; // Import the useAuth hook
@@ -7,6 +7,7 @@ const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const { isLoggedIn, setIsLoggedIn } = useAuth(); // Track login state
   const { isRegistered, setIsRegistered } = useAuth(); // Track login state
+  const [activeNav, setActiveNav] = useState<string>("");
 
   const handleSignOut = () => {
     setIsLoggedIn(false); // Set isLoggedIn to false
@@ -16,6 +17,11 @@ const Dashboard: React.FC = () => {
     localStorage.setItem("isRegistered", "false"); // Update localStorage for persistence
     // Update localStorage for persistence
     navigate("/login"); // Redirect to login after signing out
+  };
+
+  const handleNavClick = (path: string) => {
+    setActiveNav(path);
+    navigate(path);
   };
 
   return (
@@ -48,10 +54,30 @@ const Dashboard: React.FC = () => {
 
         <div className="page-container" style={{ display: "flex" }}>
           <div className="left-nav">
-            <p onClick={() => navigate("/myposts")}>My Posts</p>
-            <p onClick={() => navigate("/articles")}>Articles</p>
-            <p onClick={() => navigate("/archive")}>Archive</p>
-            <p onClick={() => navigate("/likedpost")}>Liked Posts</p>
+            <p
+              onClick={() => handleNavClick("/myposts")}
+              className={activeNav === "/myposts" ? "active" : ""}
+            >
+              My Posts
+            </p>
+            <p
+              onClick={() => handleNavClick("/articles")}
+              className={activeNav === "/articles" ? "active" : ""}
+            >
+              Articles
+            </p>
+            <p
+              onClick={() => handleNavClick("/archive")}
+              className={activeNav === "/archive" ? "active" : ""}
+            >
+              Archive
+            </p>
+            <p
+              onClick={() => handleNavClick("/likedpost")}
+              className={activeNav === "/likedpost" ? "active" : ""}
+            >
+              Liked Posts
+            </p>
           </div>
 
           <div className="route-page" style={{ padding: "20px" }}>

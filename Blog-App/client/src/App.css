@@ -71,6 +71,11 @@
 .left-nav p {
   padding: 10px;
   width: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.left-nav p.active {
+  background-color: #312513;
 }
 .left-nav :hover {
   cursor: pointer;

@@ -10,28 +10,30 @@ import { AuthProvider } from "./Components/Auth/AuthContext";
 import Archive from "./Components/Blog App/Archive";
 import Articles from "./Components/Blog App/Articles";
 import LikedPost from "./Components/Blog App/LikedPost";
+import { LikedPostProvider } from "./Components/Blog App/LikedPostContext";
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      {" "}
-      {/* Wrap everything with LikedPostProvider */}
-      <Router>
-        <Routes>
-          <Route path="/" element={<Dashboard />}>
-            <Route index element={<Home />} />
-            <Route path="/myposts" element={<MyPosts />} />
-            <Route path="/archive" element={<Archive />} />
-            <Route path="/articles" element={<Articles />} />
-            <Route path="/likedpost" element={<LikedPost />} />
-          </Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </Router>
+      <LikedPostProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Dashboard />}>
+              <Route index element={<Home />} />
+              <Route path="/myposts" element={<MyPosts />} />
+              <Route path="/archive" element={<Archive />} />
+              <Route path="/articles" element={<Articles />} />
+              <Route path="/likedpost" element={<LikedPost />} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route index element={<Home />} />
+            </Route>
+            <Route path="/liked-posts" element={<LikedPost />} />
+          </Routes>
+        </Router>
+      </LikedPostProvider>
     </AuthProvider>
   );
 };
