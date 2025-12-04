@@ -148,11 +148,6 @@ const Home: React.FC = () => {
                       Elite Creators
                     </h2>
                   </div>
-                  <div className="px-3 py-1.5 rounded-full bg-linear-to-r from-[#ff1a1a]/10 via-[#ff0066]/10 to-[#ff00ff]/10 border border-[#ff0066]/30">
-                    <span className="text-sm font-semibold bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] bg-clip-text text-transparent">
-                      TOP {topPosts.length}
-                    </span>
-                  </div>
                 </div>
 
                 <div className="space-y-4">
