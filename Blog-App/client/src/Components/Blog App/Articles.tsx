@@ -206,7 +206,7 @@ const ArticlePage: React.FC = () => {
                 </span>
                 <br />
                 <span className="bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] bg-clip-text text-transparent">
-                  Elite Trends for 2024
+                  Elite Trends for 2025
                 </span>
               </h1>
 
@@ -214,7 +214,7 @@ const ArticlePage: React.FC = () => {
               <p className="text-xl lg:text-2xl text-gray-300 mb-10 max-w-3xl">
                 Explore the groundbreaking innovations and cutting-edge
                 technologies that are redefining the web development landscape
-                in 2024 and beyond.
+                in 2025 and beyond.
               </p>
 
               {/* Author and Actions */}
@@ -233,7 +233,7 @@ const ArticlePage: React.FC = () => {
                       Alex Johnson
                     </p>
                     <p className="text-sm text-gray-400">
-                      Senior Architect • Published Jan 15, 2024
+                      Senior Architect • Published Jan 15, 2025
                     </p>
                   </div>
                 </div>
@@ -297,7 +297,7 @@ const ArticlePage: React.FC = () => {
                   <p className="text-xl leading-relaxed text-gray-300 mb-6">
                     Web development continues to evolve at an unprecedented
                     pace, with new frameworks, tools, and methodologies emerging
-                    constantly. As we move deeper into 2024, several key trends
+                    constantly. As we move deeper into 2025, several key trends
                     are fundamentally reshaping the landscape of web
                     development.
                   </p>
@@ -361,7 +361,7 @@ const ArticlePage: React.FC = () => {
                 <div className="my-12 p-8 rounded-2xl bg-linear-to-br from-gray-900/50 to-gray-900/30 border border-gray-800/50">
                   <h3 className="text-2xl font-bold text-gray-100 mb-6 flex items-center gap-3">
                     <TrendingUpIcon className="text-[#ff0066]" />
-                    Key Statistics for 2024
+                    Key Statistics for 2025
                   </h3>
                   <div className="grid grid-cols-2 gap-6">
                     <div className="text-center p-4 rounded-xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50">
