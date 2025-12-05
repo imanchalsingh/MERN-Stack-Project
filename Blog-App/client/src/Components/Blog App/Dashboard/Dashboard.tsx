@@ -10,13 +10,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import CreateIcon from "@mui/icons-material/Create";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import SettingsIcon from "@mui/icons-material/Settings";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
-import BoltIcon from "@mui/icons-material/Bolt";
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
@@ -27,7 +24,6 @@ const Dashboard: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
-  const [notifications] = useState<number>(3);
 
   useEffect(() => {
     // Set active nav based on current route
@@ -96,10 +92,7 @@ const Dashboard: React.FC = () => {
                 onClick={() => handleNavClick("/")}
               >
                 <div className="relative">
-                  <h1
-                    style={{ fontFamily: "Mr Bedfort" }}
-                    className="text-4xl font-bold hover:scale-105 transition-transform duration-300"
-                  >
+                  <h1 className=" LogoText text-4xl font-bold hover:scale-105 transition-transform duration-300">
                     <span className="bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] bg-clip-text text-transparent">
                       Blogify
                     </span>
@@ -108,42 +101,8 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
 
-            {/* Search Bar */}
-            <div className="hidden lg:flex flex-1 max-w-2xl mx-12">
-              <div className="relative w-full group">
-                <div className="absolute inset-0 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 z-10" />
-                <input
-                  type="search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search posts, articles, creators..."
-                  className="relative w-full pl-12 pr-4 py-3.5 bg-gray-900/80 border border-gray-800/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#ff0066]/50 focus:border-transparent text-gray-100 placeholder-gray-500 backdrop-blur-sm"
-                />
-              </div>
-            </div>
-
             {/* Right Side Actions */}
             <div className="flex items-center space-x-4">
-              {/* Create Post Button */}
-              <button className="hidden sm:flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] text-white font-semibold hover:shadow-2xl hover:shadow-[#ff0066]/30 hover:scale-105 transition-all duration-300 group">
-                <CreateIcon />
-                <span>Create</span>
-                <BoltIcon
-                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  sx={{ fontSize: "18px" }}
-                />
-              </button>
-
-              {/* Notifications */}
-              <button className="relative p-2.5 rounded-xl hover:bg-gray-800/80 transition-all duration-300 group">
-                <div className="absolute inset-0 bg-linear-to-r from-[#ff1a1a] to-[#ff00ff] rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                <NotificationsIcon className="relative text-gray-300 group-hover:text-white" />
-                <span className="absolute -top-1 -right-1 w-6 h-6 bg-linear-to-br from-[#ff1a1a] to-[#ff0066] text-xs rounded-full flex items-center justify-center font-bold shadow-lg">
-                  {notifications}
-                </span>
-              </button>
-
               {/* User Profile / Login */}
               <div className="flex items-center">
                 {isLoggedIn || isRegistered ? (
@@ -313,14 +272,6 @@ const Dashboard: React.FC = () => {
                   )}
                 </button>
               ))}
-
-              {/* Create Post Button - Mobile */}
-              <button className="w-full flex items-center justify-center gap-3 px-4 py-4 mt-6 rounded-2xl bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] text-white font-semibold shadow-xl shadow-[#ff0066]/30">
-                <CreateIcon />
-                <span className="text-lg">Create New Post</span>
-                <BoltIcon sx={{ fontSize: "20px" }} />
-              </button>
-
               {/* Sign Out Button */}
               {(isLoggedIn || isRegistered) && (
                 <button
