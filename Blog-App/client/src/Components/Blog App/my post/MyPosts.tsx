@@ -12,7 +12,7 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import DescriptionIcon from "@mui/icons-material/Description";
-import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import PersonIcon from "@mui/icons-material/Person";
 import { toast, Toaster } from "react-hot-toast";
 
 interface Post {
@@ -65,7 +65,7 @@ const MyPosts: React.FC = () => {
       toast.error("Please log in to create posts", {
         icon: "🔒",
         style: {
-          background: "#0f172a",
+          background: "#0a0f1e",
           color: "#f1f5f9",
           border: "1px solid #1e293b",
         },
@@ -77,7 +77,7 @@ const MyPosts: React.FC = () => {
       toast.error("Post content cannot be empty!", {
         icon: "📝",
         style: {
-          background: "#0f172a",
+          background: "#0a0f1e",
           color: "#f1f5f9",
           border: "1px solid #1e293b",
         },
@@ -89,7 +89,7 @@ const MyPosts: React.FC = () => {
       toast.error("Post content exceeds 1000 characters!", {
         icon: "⚠️",
         style: {
-          background: "#0f172a",
+          background: "#0a0f1e",
           color: "#f1f5f9",
           border: "1px solid #1e293b",
         },
@@ -109,7 +109,7 @@ const MyPosts: React.FC = () => {
       toast.success("Post updated successfully!", {
         icon: "✏️",
         style: {
-          background: "#0f172a",
+          background: "#0a0f1e",
           color: "#f1f5f9",
           border: "1px solid #1e293b",
         },
@@ -135,7 +135,7 @@ const MyPosts: React.FC = () => {
       toast.success("Post published successfully!", {
         icon: "🚀",
         style: {
-          background: "#0f172a",
+          background: "#0a0f1e",
           color: "#f1f5f9",
           border: "1px solid #1e293b",
         },
@@ -163,14 +163,14 @@ const MyPosts: React.FC = () => {
     toast(
       (t) => (
         <div className="text-center">
-          <p className="font-semibold text-gray-100 mb-3">Delete this post?</p>
+          <p className="font-semibold text-gray-100 mb-2">Delete this post?</p>
           <p className="text-sm text-gray-400 mb-4">
             This action cannot be undone.
           </p>
           <div className="flex gap-3">
             <button
               onClick={() => toast.dismiss(t.id)}
-              className="flex-1 px-4 py-2 bg-gray-800/50 hover:bg-gray-800 rounded-lg text-gray-300 font-medium"
+              className="flex-1 px-4 py-2 bg-gray-800/50 hover:bg-gray-800 rounded-xl text-gray-300 font-medium"
             >
               Cancel
             </button>
@@ -182,14 +182,14 @@ const MyPosts: React.FC = () => {
                 toast.success("Post deleted successfully", {
                   icon: "🗑️",
                   style: {
-                    background: "#0f172a",
+                    background: "#0a0f1e",
                     color: "#f1f5f9",
                     border: "1px solid #1e293b",
                   },
                 });
                 toast.dismiss(t.id);
               }}
-              className="flex-1 px-4 py-2 bg-linear-to-r from-[#ff1a1a] to-[#ff0066] text-white rounded-lg font-medium"
+              className="flex-1 px-4 py-2 bg-linear-to-r from-emerald-600 to-yellow-600 text-white rounded-xl font-medium"
             >
               Delete
             </button>
@@ -211,7 +211,7 @@ const MyPosts: React.FC = () => {
     toast.success("Moved to drafts", {
       icon: "📁",
       style: {
-        background: "#0f172a",
+        background: "#0a0f1e",
         color: "#f1f5f9",
         border: "1px solid #1e293b",
       },
@@ -234,7 +234,7 @@ const MyPosts: React.FC = () => {
     toast.success("Post published from drafts!", {
       icon: "📤",
       style: {
-        background: "#0f172a",
+        background: "#0a0f1e",
         color: "#f1f5f9",
         border: "1px solid #1e293b",
       },
@@ -300,11 +300,11 @@ const MyPosts: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+      <div className="min-h-screen bg-linear-to-br from-gray-900 via-gray-950 to-black flex items-center justify-center">
         <div className="text-center">
-          <div className="relative mx-auto mb-6">
-            <div className="w-16 h-16 rounded-full bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] animate-spin"></div>
-            <div className="absolute inset-4 bg-gray-950 rounded-full"></div>
+          <div className="relative mx-auto mb-4">
+            <div className="w-12 h-12 rounded-full bg-linear-to-r from-emerald-500 to-yellow-500 animate-spin"></div>
+            <div className="absolute inset-3 bg-gray-950 rounded-full"></div>
           </div>
           <p className="text-gray-400">Loading your content...</p>
         </div>
@@ -313,86 +313,82 @@ const MyPosts: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen text-gray-100">
+    <div className="min-h-screen bg-linear-to-br from-gray-900 via-gray-950 to-black text-gray-100 p-4 md:p-6 lg:p-8">
       <Toaster
         position="top-right"
         toastOptions={{
           style: {
-            background: "#0f172a",
+            background: "#0a0f1e",
             color: "#fff",
             border: "1px solid #1e293b",
           },
         }}
       />
 
-      {/* Background Glow Effects */}
+      {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#ff1a1a] rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse"></div>
-        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-[#ff00ff] rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse delay-1000"></div>
+        <div className="absolute -top-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 -left-20 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-20 left-1/3 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative z-10 max-w-8xl mx-auto p-6 lg:p-8">
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-10">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-10">
+        <div className="mb-8">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-6">
             <div className="flex items-center gap-4">
-              <div className="relative">
-                <div className="w-16 h-16 rounded-2xl bg-linear-to-br from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] flex items-center justify-center shadow-xl shadow-[#ff0066]/30">
-                  <DashboardIcon className="text-white text-3xl" />
-                </div>
-                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-linear-to-br from-yellow-500 to-orange-500 flex items-center justify-center shadow-lg">
-                  <span className="text-xs font-bold text-gray-900">PRO</span>
-                </div>
+              <div className="w-12 h-12 rounded-xl bg-linear-to-br from-emerald-500 to-yellow-500 flex items-center justify-center shadow-lg">
+                <DashboardIcon className="text-white" />
               </div>
               <div>
-                <h1 className="text-3xl lg:text-4xl font-bold text-gray-100">
-                  Content Dashboard
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-100">
+                  My Posts
                 </h1>
-                <p className="text-gray-400 mt-2">
-                  Manage and track your published content
+                <p className="text-gray-400 text-sm">
+                  Manage and track your content
                 </p>
               </div>
             </div>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="relative overflow-hidden bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-sm rounded-2xl p-5 border border-gray-800/50 min-w-40">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
-                <p className="text-sm text-gray-400 mb-2">Total Posts</p>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+              <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 border border-gray-800/50">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div>
+                <p className="text-xs text-gray-400 mb-2">Total Posts</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-3xl font-bold bg-linear-to-r from-[#ff1a1a] to-[#ff0066] bg-clip-text text-transparent">
+                  <p className="text-xl font-bold text-emerald-400">
                     {posts.length}
                   </p>
-                  <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#ff1a1a]/20 to-[#ff00ff]/20 flex items-center justify-center">
-                    <DescriptionIcon className="text-[#ff0066]" />
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                    <DescriptionIcon className="text-emerald-400" />
                   </div>
                 </div>
               </div>
 
-              <div className="relative overflow-hidden bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-sm rounded-2xl p-5 border border-gray-800/50 min-w-40">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff0066] to-[#ff00ff]"></div>
-                <p className="text-sm text-gray-400 mb-2">Published</p>
+              <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 border border-gray-800/50">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div>
+                <p className="text-xs text-gray-400 mb-2">Published</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-3xl font-bold bg-linear-to-r from-[#ff0066] to-[#ff00ff] bg-clip-text text-transparent">
+                  <p className="text-xl font-bold text-yellow-400">
                     {posts.filter((p) => !p.isDraft).length}
                   </p>
-                  <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#ff0066]/20 to-[#ff00ff]/20 flex items-center justify-center">
-                    <VisibilityIcon className="text-[#ff00ff]" />
+                  <div className="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center">
+                    <VisibilityIcon className="text-yellow-400" />
                   </div>
                 </div>
               </div>
 
-              <div className="relative overflow-hidden bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-sm rounded-2xl p-5 border border-gray-800/50 min-w-40">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] to-[#ff00ff]"></div>
-                <p className="text-sm text-gray-400 mb-2">Total Views</p>
+              <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 border border-gray-800/50">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div>
+                <p className="text-xs text-gray-400 mb-2">Total Views</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-3xl font-bold bg-linear-to-r from-[#ff1a1a] to-[#ff00ff] bg-clip-text text-transparent">
+                  <p className="text-xl font-bold text-emerald-400">
                     {posts
                       .reduce((sum, post) => sum + (post.views || 0), 0)
                       .toLocaleString()}
                   </p>
-                  <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#ff1a1a]/20 to-[#ff00ff]/20 flex items-center justify-center">
-                    <TrendingUpIcon className="text-[#ff0066]" />
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                    <TrendingUpIcon className="text-emerald-400" />
                   </div>
                 </div>
               </div>
@@ -400,7 +396,7 @@ const MyPosts: React.FC = () => {
           </div>
 
           {/* Create Post Button and Filters */}
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 mb-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-6">
             <button
               onClick={() => {
                 setEditingPost(null);
@@ -408,29 +404,23 @@ const MyPosts: React.FC = () => {
                 setCharacterCount(0);
                 setIsDialogOpen(true);
               }}
-              className="group relative overflow-hidden rounded-2xl"
+              className="px-5 py-3 bg-linear-to-r from-emerald-600 to-yellow-600 hover:from-emerald-500 hover:to-yellow-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2"
             >
-              <div className="absolute inset-0 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative bg-linear-to-r from-gray-900 to-gray-800 group-hover:from-transparent group-hover:to-transparent transition-all duration-300">
-                <div className="flex items-center justify-center gap-3 px-8 py-4 rounded-2xl border border-gray-800/50 group-hover:border-transparent transition-all duration-300">
-                  <CreateIcon />
-                  <span className="font-bold text-lg">Create New Content</span>
-                  <RocketLaunchIcon className="group-hover:rotate-12 transition-transform duration-300" />
-                </div>
-              </div>
+              <CreateIcon />
+              Create New Post
             </button>
 
             {/* Filter Buttons */}
-            <div className="flex items-center gap-2 bg-gray-900/60 backdrop-blur-sm p-1.5 rounded-2xl border border-gray-800/50">
+            <div className="flex items-center gap-2 bg-gray-900/80 backdrop-blur-sm p-1.5 rounded-xl border border-gray-800/50">
               {["all", "published", "drafts"].map((filterType) => (
                 <button
                   key={filterType}
                   onClick={() =>
                     setFilter(filterType as "all" | "published" | "drafts")
                   }
-                  className={`px-5 py-2.5 rounded-xl font-medium capitalize transition-all duration-300 ${
+                  className={`px-4 py-2 rounded-lg font-medium capitalize transition-all duration-300 ${
                     filter === filterType
-                      ? "bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] text-white shadow-lg shadow-[#ff0066]/20"
+                      ? "bg-linear-to-r from-emerald-600 to-yellow-600 text-white shadow"
                       : "text-gray-400 hover:text-gray-100 hover:bg-gray-800/50"
                   }`}
                 >
@@ -443,24 +433,19 @@ const MyPosts: React.FC = () => {
 
         {/* Posts Grid */}
         {filteredPosts.length === 0 ? (
-          <div className="relative overflow-hidden bg-linear-to-br from-gray-900/40 to-gray-900/20 backdrop-blur-xl rounded-3xl p-12 text-center border border-gray-800/50 shadow-2xl shadow-black/30">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
+          <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-2xl p-8 text-center border border-gray-800/50">
+            {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
             <div className="max-w-md mx-auto">
-              <div className="relative inline-block mb-8">
-                <div className="w-32 h-32 rounded-full bg-linear-to-br from-[#ff1a1a]/10 via-[#ff0066]/10 to-[#ff00ff]/10 flex items-center justify-center mx-auto">
-                  <CreateIcon sx={{ fontSize: "64px", color: "#4b5563" }} />
-                </div>
-                <div className="absolute -top-2 -right-2 w-12 h-12 rounded-full bg-linear-to-br from-yellow-500 to-orange-500 flex items-center justify-center shadow-lg">
-                  <span className="text-sm font-bold text-gray-900">+</span>
-                </div>
+              <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
+                <CreateIcon sx={{ fontSize: "40px", color: "#4b5563" }} />
               </div>
-              <h3 className="text-3xl font-bold text-gray-100 mb-4">
+              <h3 className="text-xl font-bold text-gray-100 mb-3">
                 {filter === "drafts" ? "No Drafts Found" : "Ready to Create?"}
               </h3>
-              <p className="text-gray-400 mb-8 text-lg">
+              <p className="text-gray-400 mb-6">
                 {filter === "drafts"
                   ? "Drafts will appear here when you save content for later."
-                  : "Start your content journey by creating your first masterpiece!"}
+                  : "Create your first post to get started!"}
               </p>
               <button
                 onClick={() => {
@@ -469,49 +454,39 @@ const MyPosts: React.FC = () => {
                   setCharacterCount(0);
                   setIsDialogOpen(true);
                 }}
-                className="group relative overflow-hidden rounded-2xl"
+                className="px-5 py-3 bg-linear-to-r from-emerald-600 to-yellow-600 hover:from-emerald-500 hover:to-yellow-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5"
               >
-                <div className="absolute inset-0 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative bg-linear-to-r from-gray-900 to-gray-800 group-hover:from-transparent group-hover:to-transparent transition-all duration-300">
-                  <div className="flex items-center justify-center gap-3 px-8 py-4 rounded-2xl border border-gray-800/50 group-hover:border-transparent transition-all duration-300">
-                    <span className="font-bold text-lg">
-                      Launch Creator Studio
-                    </span>
-                    <RocketLaunchIcon className="group-hover:rotate-12 transition-transform duration-300" />
-                  </div>
-                </div>
+                Create First Post
               </button>
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredPosts.map((post) => (
               <div
                 key={post.id}
-                className={`group relative overflow-hidden rounded-3xl transition-all duration-500 hover:scale-[1.02] ${
+                className={`group relative overflow-hidden rounded-xl transition-all duration-300 hover:border-emerald-500/30 ${
                   post.isDraft
-                    ? "border-yellow-500/30 hover:border-yellow-500/50"
-                    : "border-gray-800/50 hover:border-[#ff0066]/30"
+                    ? "border-yellow-500/30"
+                    : "border-gray-800/50"
                 }`}
               >
-                {/* linear Border */}
-                <div
+                {/* Accent Border */}
+                {/* <div
                   className={`absolute top-0 left-0 right-0 h-1 ${
                     post.isDraft
-                      ? "bg-linear-to-r from-yellow-500 to-orange-500"
-                      : "bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"
+                      ? "bg-linear-to-r from-yellow-500 to-yellow-600"
+                      : "bg-linear-to-r from-emerald-500 to-yellow-500"
                   }`}
-                ></div>
+                ></div> */}
 
-                <div className="bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-sm p-6">
+                <div className="bg-gray-900/80 p-4">
                   {/* Post Header */}
-                  <div className="flex items-start justify-between mb-5">
+                  <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div className="relative">
-                        <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] flex items-center justify-center shadow-lg">
-                          <span className="text-white font-bold text-lg">
-                            {post.username[0].toUpperCase()}
-                          </span>
+                        <div className="w-10 h-10 rounded-lg bg-linear-to-br from-emerald-500 to-yellow-500 flex items-center justify-center shadow">
+                          <PersonIcon className="text-white text-sm" />
                         </div>
                         {post.isDraft && (
                           <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-yellow-500 flex items-center justify-center">
@@ -522,10 +497,10 @@ const MyPosts: React.FC = () => {
                         )}
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-100">
+                        <h3 className="font-bold text-gray-100 text-sm">
                           {post.username}
                         </h3>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-xs text-gray-400">
                           {getTimeAgo(
                             post.timestamp || new Date().toISOString()
                           )}
@@ -533,102 +508,96 @@ const MyPosts: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Actions */}
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => handleBookmark(post.id)}
-                        className="p-2 rounded-xl hover:bg-gray-800/50 transition-colors"
-                      >
-                        {post.isBookmarked ? (
-                          <BookmarkIcon className="text-[#ff00ff]" />
-                        ) : (
-                          <BookmarkBorderIcon className="text-gray-400" />
-                        )}
-                      </button>
-                    </div>
+                    {/* Bookmark Button */}
+                    <button
+                      onClick={() => handleBookmark(post.id)}
+                      className="p-1.5 rounded-lg hover:bg-gray-800/50 transition-colors"
+                    >
+                      {post.isBookmarked ? (
+                        <BookmarkIcon className="text-emerald-400" />
+                      ) : (
+                        <BookmarkBorderIcon className="text-gray-400" />
+                      )}
+                    </button>
                   </div>
 
                   {/* Post Content */}
-                  <div className="mb-6">
-                    <div className="bg-gray-900/50 rounded-2xl p-5 min-h-[140px] group-hover:bg-gray-900/70 transition-colors duration-300">
-                      <p className="text-gray-200 leading-relaxed line-clamp-3">
+                  <div className="mb-4">
+                    <div className="bg-gray-900/50 rounded-lg p-3 min-h-[120px] group-hover:bg-gray-900/70 transition-colors duration-300">
+                      <p className="text-gray-200 text-sm leading-relaxed line-clamp-3">
                         {post.content}
                       </p>
                     </div>
                   </div>
 
                   {/* Post Stats */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-5">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-4">
                       <button
                         onClick={() => handleLike(post.id)}
-                        className={`flex items-center gap-2 px-3 py-1.5 rounded-xl transition-all duration-300 ${
+                        className={`flex items-center gap-2 px-2 py-1.5 rounded-lg transition-all duration-300 ${
                           post.isLiked
-                            ? "bg-[#ff0066]/20 text-[#ff0066]"
-                            : "text-gray-400 hover:text-[#ff0066] hover:bg-gray-800/50"
+                            ? "bg-linear-to-r from-emerald-500/20 to-yellow-500/20 text-emerald-400"
+                            : "text-gray-400 hover:text-emerald-400 hover:bg-gray-800/50"
                         }`}
                       >
                         {post.isLiked ? (
-                          <FavoriteIcon sx={{ fontSize: "20px" }} />
+                          <FavoriteIcon sx={{ fontSize: "18px" }} />
                         ) : (
-                          <FavoriteBorderIcon sx={{ fontSize: "20px" }} />
+                          <FavoriteBorderIcon sx={{ fontSize: "18px" }} />
                         )}
-                        <span className="font-semibold">{post.likes || 0}</span>
+                        <span className="font-medium">{post.likes || 0}</span>
                       </button>
 
-                      <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-gray-400 hover:text-[#ff00ff] hover:bg-gray-800/50 transition-all duration-300">
-                        <ChatBubbleOutlineIcon sx={{ fontSize: "20px" }} />
-                        <span className="font-semibold">
-                          {post.comments || 0}
-                        </span>
+                      <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-400 hover:text-yellow-400 hover:bg-gray-800/50 transition-all duration-300">
+                        <ChatBubbleOutlineIcon sx={{ fontSize: "18px" }} />
+                        <span className="font-medium">{post.comments || 0}</span>
                       </div>
 
-                      <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-gray-400 hover:text-[#ff1a1a] hover:bg-gray-800/50 transition-all duration-300">
-                        <ShareIcon sx={{ fontSize: "20px" }} />
-                        <span className="font-semibold">
-                          {post.shares || 0}
-                        </span>
+                      <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-400 hover:text-emerald-400 hover:bg-gray-800/50 transition-all duration-300">
+                        <ShareIcon sx={{ fontSize: "18px" }} />
+                        <span className="font-medium">{post.shares || 0}</span>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-gray-900/50">
+                    <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg bg-gray-900/50">
                       <VisibilityIcon
-                        sx={{ fontSize: "18px", color: "#9ca3af" }}
+                        sx={{ fontSize: "16px", color: "#9ca3af" }}
                       />
-                      <span className="font-semibold text-gray-300">
+                      <span className="font-medium text-gray-300">
                         {post.views?.toLocaleString() || 0}
                       </span>
                     </div>
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-2">
                     {post.isDraft ? (
                       <>
                         <button
                           onClick={() => handleEdit(post)}
-                          className="py-3 bg-linear-to-r from-gray-900/50 to-gray-900/20 hover:from-gray-800/50 rounded-xl text-gray-300 hover:text-gray-100 font-semibold transition-all duration-300"
+                          className="py-2 bg-gray-900/60 hover:bg-gray-800/60 rounded-lg text-gray-300 hover:text-gray-100 font-medium transition-all duration-300"
                         >
-                          Edit Draft
+                          Edit
                         </button>
                         <button
                           onClick={() => handlePublishDraft(post.id)}
-                          className="py-3 rounded-xl bg-linear-to-r from-[#ff1a1a] to-[#ff0066] text-white font-semibold hover:shadow-lg hover:shadow-[#ff0066]/20 transition-all duration-300"
+                          className="py-2 rounded-lg bg-linear-to-r from-emerald-600 to-yellow-600 text-white font-medium hover:shadow transition-all duration-300"
                         >
-                          Publish Now
+                          Publish
                         </button>
                       </>
                     ) : (
                       <>
                         <button
                           onClick={() => handleEdit(post)}
-                          className="py-3 bg-linear-to-r from-gray-900/50 to-gray-900/20 hover:from-gray-800/50 rounded-xl text-gray-300 hover:text-gray-100 font-semibold transition-all duration-300"
+                          className="py-2 bg-gray-900/60 hover:bg-gray-800/60 rounded-lg text-gray-300 hover:text-gray-100 font-medium transition-all duration-300"
                         >
-                          Edit Post
+                          Edit
                         </button>
                         <button
                           onClick={() => handleDraft(post.id)}
-                          className="py-3 rounded-xl bg-linear-to-r from-yellow-600/20 to-orange-600/20 text-yellow-400 hover:from-yellow-600/30 hover:to-orange-600/30 font-semibold transition-all duration-300"
+                          className="py-2 rounded-lg bg-linear-to-r from-yellow-500/10 to-yellow-600/10 text-yellow-400 hover:from-yellow-500/20 hover:to-yellow-600/20 font-medium transition-all duration-300"
                         >
                           Save Draft
                         </button>
@@ -637,13 +606,13 @@ const MyPosts: React.FC = () => {
                   </div>
 
                   {/* Delete Button */}
-                  <div className="mt-4 pt-4 border-t border-gray-800/50">
+                  <div className="mt-3 pt-3 border-t border-gray-800/50">
                     <button
                       onClick={() => handleDelete(post.id)}
-                      className="w-full py-3 rounded-xl bg-linear-to-r from-red-600/10 to-pink-600/10 text-red-400 hover:from-red-600/20 hover:to-pink-600/20 font-semibold transition-all duration-300 flex items-center justify-center gap-2"
+                      className="w-full py-2 rounded-lg bg-linear-to-r from-emerald-500/10 to-yellow-500/10 text-emerald-400 hover:from-emerald-500/20 hover:to-yellow-500/20 font-medium transition-all duration-300 flex items-center justify-center gap-2"
                     >
-                      <DeleteIcon sx={{ fontSize: "20px" }} />
-                      Remove Content
+                      <DeleteIcon sx={{ fontSize: "16px" }} />
+                      Delete
                     </button>
                   </div>
                 </div>
@@ -658,7 +627,7 @@ const MyPosts: React.FC = () => {
         <div className="fixed inset-0 z-50 overflow-y-auto">
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
             onClick={() => {
               setIsDialogOpen(false);
               setEditingPost(null);
@@ -670,34 +639,25 @@ const MyPosts: React.FC = () => {
           {/* Dialog Container */}
           <div className="flex min-h-full items-center justify-center p-4">
             {/* Dialog Content */}
-            <div className="relative w-full max-w-2xl transform overflow-hidden rounded-3xl bg-linear-to-br from-gray-900 via-gray-900/95 to-gray-950 shadow-2xl shadow-black/50 transition-all border border-gray-800/50 backdrop-blur-xl">
-              {/* linear Border Top */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
+            <div className="relative w-full max-w-2xl transform overflow-hidden rounded-2xl bg-gray-900 shadow-lg border border-gray-800/50">
+              {/* Accent Border Top */}
+              {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
 
               {/* Header */}
               <div className="p-6 border-b border-gray-800/50">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="relative">
-                      <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] flex items-center justify-center shadow-xl shadow-[#ff0066]/30">
-                        <CreateIcon className="text-white text-2xl" />
-                      </div>
-                      <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-linear-to-br from-yellow-500 to-orange-500 flex items-center justify-center shadow-lg">
-                        <span className="text-xs font-bold text-gray-900">
-                          PRO
-                        </span>
-                      </div>
+                    <div className="w-12 h-12 rounded-xl bg-linear-to-br from-emerald-500 to-yellow-500 flex items-center justify-center shadow">
+                      <CreateIcon className="text-white" />
                     </div>
                     <div>
-                      <h2 className="text-3xl font-bold text-gray-100">
-                        {editingPost
-                          ? "Edit Elite Content"
-                          : "Create Premium Content"}
+                      <h2 className="text-xl font-bold text-gray-100">
+                        {editingPost ? "Edit Post" : "Create Post"}
                       </h2>
-                      <p className="text-gray-400 mt-2">
+                      <p className="text-gray-400 text-sm mt-1">
                         {editingPost
-                          ? "Refine your masterpiece to perfection"
-                          : "Craft content that will captivate the community"}
+                          ? "Update your content"
+                          : "Share your thoughts with the community"}
                       </p>
                     </div>
                   </div>
@@ -708,7 +668,7 @@ const MyPosts: React.FC = () => {
                       setNewPost({ content: "" });
                       setCharacterCount(0);
                     }}
-                    className="text-gray-400 hover:text-gray-100 hover:bg-gray-800/50 rounded-xl p-2.5 transition-all duration-300"
+                    className="text-gray-400 hover:text-gray-100 hover:bg-gray-800/50 rounded-lg p-2 transition-all duration-300"
                   >
                     <CloseIcon />
                   </button>
@@ -717,127 +677,50 @@ const MyPosts: React.FC = () => {
 
               {/* Content Area */}
               <div className="p-6">
-                <div className="space-y-8">
-                  {/* Author Info Card */}
-                  <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-gray-900/60 to-gray-900/30 border border-gray-800/50 p-5">
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] opacity-50"></div>
-                    <div className="flex items-center gap-4">
-                      <div className="relative">
-                        <div className="w-16 h-16 rounded-2xl bg-linear-to-br from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] flex items-center justify-center shadow-lg">
-                          <span className="text-white font-bold text-2xl">
-                            {username?.[0]?.toUpperCase() || "U"}
-                          </span>
-                        </div>
-                        <div className="absolute -bottom-2 -right-2 w-7 h-7 rounded-full bg-green-500 border-3 border-gray-900 flex items-center justify-center">
-                          <svg
-                            className="w-3 h-3 text-white"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                      <div>
-                        <p className="font-bold text-gray-100 text-xl">
-                          {username || "Elite Creator"}
-                        </p>
-                        <p className="text-gray-400 text-sm mt-1">
-                          Publishing to global audience
-                        </p>
-                      </div>
+                <div className="space-y-6">
+                  {/* Author Info */}
+                  <div className="flex items-center gap-3 p-4 rounded-xl bg-gray-900/60 border border-gray-800/50">
+                    <div className="w-10 h-10 rounded-lg bg-linear-to-br from-emerald-500 to-yellow-500 flex items-center justify-center shadow">
+                      <PersonIcon className="text-white text-sm" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-100">
+                        {username || "Creator"}
+                      </p>
+                      <p className="text-gray-400 text-sm">
+                        Publishing to community
+                      </p>
                     </div>
                   </div>
 
                   {/* Content Editor */}
                   <div>
-                    <label className="block text-lg font-bold text-gray-100 mb-4">
-                      Your Content
+                    <label className="block font-medium text-gray-100 mb-3">
+                      Post Content
                     </label>
-                    <div className="relative group">
-                      <div className="absolute inset-0 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                      <textarea
-                        name="content"
-                        value={newPost.content}
-                        onChange={handleInputChange}
-                        placeholder="Share your thoughts, insights, or creative masterpiece with the world..."
-                        className="relative w-full h-64 bg-gray-900/80 border border-gray-800/50 rounded-2xl p-6 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#ff0066]/50 focus:border-transparent resize-none backdrop-blur-sm text-lg leading-relaxed"
-                        required
-                        maxLength={1000}
-                      />
-                    </div>
-                    <div className="flex justify-between items-center mt-4">
+                    <textarea
+                      name="content"
+                      value={newPost.content}
+                      onChange={handleInputChange}
+                      placeholder="What's on your mind?..."
+                      className="w-full h-48 bg-gray-900/60 border border-gray-800/50 rounded-xl p-4 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-transparent resize-none"
+                      required
+                      maxLength={1000}
+                    />
+                    <div className="flex justify-between items-center mt-3">
                       <div className="text-sm text-gray-400">
-                        Express yourself freely (max 1000 characters)
+                        Max 1000 characters
                       </div>
                       <div
-                        className={`text-sm font-bold px-4 py-2 rounded-xl ${
+                        className={`text-sm font-medium px-3 py-1.5 rounded-lg ${
                           characterCount > 900
-                            ? "bg-linear-to-r from-[#ff1a1a]/20 to-[#ff0066]/20 text-[#ff1a1a]"
+                            ? "bg-linear-to-r from-emerald-500/10 to-yellow-500/10 text-emerald-400"
                             : characterCount > 800
-                            ? "bg-linear-to-r from-[#ff0066]/20 to-[#ff00ff]/20 text-[#ff0066]"
-                            : "bg-linear-to-b from-gray-900/60 to-gray-900/30 text-gray-400"
+                            ? "bg-linear-to-r from-yellow-500/10 to-yellow-600/10 text-yellow-400"
+                            : "bg-gray-900/60 text-gray-400"
                         }`}
                       >
                         {characterCount}/1000
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Content Features */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-2xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50">
-                      <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-xl bg-linear-to-br from-[#ff1a1a]/20 to-[#ff00ff]/20">
-                          <svg
-                            className="w-5 h-5 text-[#ff0066]"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.2 6.5 10.266a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-gray-100">
-                            Premium Visibility
-                          </p>
-                          <p className="text-xs text-gray-400">
-                            Featured placement
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="p-4 rounded-2xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50">
-                      <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-xl bg-linear-to-br from-[#ff1a1a]/20 to-[#ff00ff]/20">
-                          <svg
-                            className="w-5 h-5 text-[#ff0066]"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-gray-100">
-                            Elite Analytics
-                          </p>
-                          <p className="text-xs text-gray-400">
-                            Performance insights
-                          </p>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -854,31 +737,17 @@ const MyPosts: React.FC = () => {
                       setNewPost({ content: "" });
                       setCharacterCount(0);
                     }}
-                    className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 text-gray-300 font-bold hover:text-gray-100 hover:border-[#ff0066]/30 transition-all duration-300"
+                    className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gray-900/60 hover:bg-gray-800/60 text-gray-300 font-medium transition-all duration-300"
                   >
                     Cancel
                   </button>
 
                   <button
                     onClick={handlePublish}
-                    className="relative group overflow-hidden rounded-2xl w-full sm:w-auto"
+                    className="w-full sm:w-auto px-6 py-3 rounded-xl bg-linear-to-r from-emerald-600 to-yellow-600 text-white font-medium hover:from-emerald-500 hover:to-yellow-500 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={!newPost.content.trim()}
                   >
-                    <div className="absolute inset-0 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div
-                      className={`relative transition-all duration-300 ${
-                        newPost.content.trim()
-                          ? "bg-linear-to-r from-gray-900 to-gray-800 group-hover:from-transparent group-hover:to-transparent"
-                          : "bg-linear-to-b from-gray-900/60 to-gray-900/30 opacity-50 cursor-not-allowed"
-                      }`}
-                    >
-                      <div className="flex items-center justify-center gap-4 px-10 py-3.5 rounded-2xl border border-gray-800/50 group-hover:border-transparent transition-all duration-300">
-                        <span className="font-bold text-lg">
-                          {editingPost ? "Update Content" : "Publish Content"}
-                        </span>
-                        <RocketLaunchIcon className="group-hover:translate-x-2 transition-transform duration-300" />
-                      </div>
-                    </div>
+                    {editingPost ? "Update Post" : "Publish Post"}
                   </button>
                 </div>
               </div>

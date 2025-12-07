@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../Auth/AuthContext";
-import SearchIcon from "@mui/icons-material/Search";
-import ArticleIcon from "@mui/icons-material/Article";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import SettingsIcon from "@mui/icons-material/Settings";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
+import HomeIcon from "@mui/icons-material/Home";
+import CreateIcon from "@mui/icons-material/Create";
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
@@ -21,7 +18,6 @@ const Dashboard: React.FC = () => {
   const { isLoggedIn, setIsLoggedIn, isRegistered, setIsRegistered } =
     useAuth();
   const [activeNav, setActiveNav] = useState<string>("");
-  const [searchQuery, setSearchQuery] = useState<string>("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
 
@@ -52,33 +48,31 @@ const Dashboard: React.FC = () => {
   };
 
   const navItems = [
-    { path: "/", label: "Dashboard", icon: <DashboardIcon /> },
-    { path: "/myposts", label: "My Posts", icon: <ArticleIcon /> },
+    { path: "/", label: "Home", icon: <HomeIcon /> },
+    { path: "/myposts", label: "My Posts", icon: <CreateIcon /> },
     { path: "/articles", label: "Articles", icon: <BookmarksIcon /> },
     { path: "/archive", label: "Archive", icon: <ArchiveIcon /> },
-    { path: "/likedpost", label: "Liked Posts", icon: <FavoriteIcon /> },
-    { path: "/trending", label: "Trending", icon: <TrendingUpIcon /> },
-    { path: "/settings", label: "Settings", icon: <SettingsIcon /> },
+    { path: "/likedpost", label: "Liked", icon: <FavoriteIcon /> },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100">
-      {/* Background Glow Effects */}
+    <div className="min-h-screen bg-linear-to-br from-gray-900 via-gray-950 to-black text-gray-100">
+      {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-[#ff1a1a] rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse"></div>
-        <div className="absolute top-1/2 -right-40 w-96 h-96 bg-[#ff00ff] rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse delay-1000"></div>
-        <div className="absolute -bottom-40 left-1/2 w-80 h-80 bg-[#ff0066] rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse delay-500"></div>
+        <div className="absolute -top-20 -left-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 -right-20 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-20 left-1/3 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl"></div>
       </div>
 
       {/* Top Navigation Bar */}
-      <header className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-xl border-b border-gray-800/50 shadow-2xl shadow-black/30">
+      <header className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800/50 shadow-lg">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-16">
             {/* Logo and Mobile Menu Button */}
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2.5 rounded-xl hover:bg-gray-800/80 transition-all duration-300"
+                className="md:hidden p-2 rounded-lg hover:bg-gray-800/80 transition-all duration-300"
               >
                 {mobileMenuOpen ? (
                   <CloseIcon className="text-gray-300" />
@@ -91,13 +85,11 @@ const Dashboard: React.FC = () => {
                 className="flex items-center cursor-pointer group"
                 onClick={() => handleNavClick("/")}
               >
-                <div className="relative">
-                  <h1 className=" LogoText text-4xl font-bold hover:scale-105 transition-transform duration-300">
-                    <span className="bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] bg-clip-text text-transparent">
-                      Blogify
-                    </span>
-                  </h1>
-                </div>
+                <h1 className="text-3xl font-bold">
+                  <span className="bg-linear-to-r from-emerald-400 via-yellow-400 to-emerald-300 bg-clip-text text-transparent font-['Engagement']">
+                    Blogify
+                  </span>
+                </h1>
               </div>
             </div>
 
@@ -106,49 +98,36 @@ const Dashboard: React.FC = () => {
               {/* User Profile / Login */}
               <div className="flex items-center">
                 {isLoggedIn || isRegistered ? (
-                  <div className="flex items-center space-x-4">
-                    <div className="hidden xl:block text-right">
-                      <p className="font-semibold text-gray-100">
-                        {username || "Creator"}
-                      </p>
-                      <p className="text-sm text-gray-400">Premium Member</p>
-                    </div>
+                  <div className="flex items-center space-x-3">
                     <div className="relative group">
-                      <button className="flex items-center gap-3 p-2 rounded-2xl hover:bg-gray-800/80 transition-all duration-300">
+                      <button className="flex items-center gap-2 p-1.5 rounded-xl hover:bg-gray-800/80 transition-all duration-300">
                         <div className="relative">
-                          <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] flex items-center justify-center shadow-lg">
-                            <span className="font-bold text-white text-lg">
+                          <div className="w-10 h-10 rounded-full bg-linear-to-br from-emerald-500 to-yellow-500 flex items-center justify-center shadow">
+                            <span className="font-bold text-white">
                               {(username || "U")[0].toUpperCase()}
                             </span>
                           </div>
-                          <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-500 border-2 border-gray-900"></div>
+                          <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-gray-900"></div>
                         </div>
                       </button>
 
                       {/* Dropdown Menu */}
-                      <div className="absolute right-0 mt-3 w-56 bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-black/50 border border-gray-800/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-top-right">
+                      <div className="absolute right-0 mt-2 w-48 bg-gray-900/95 backdrop-blur-sm rounded-xl shadow-lg border border-gray-800/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-top-right">
                         <div className="p-2">
-                          <div className="px-4 py-3 border-b border-gray-800/50">
-                            <p className="font-semibold text-gray-100">
+                          <div className="px-3 py-2 border-b border-gray-800/50">
+                            <p className="font-medium text-gray-100 text-sm">
                               {username || "User"}
                             </p>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-xs text-gray-400">
                               @{(username || "user").toLowerCase()}
                             </p>
                           </div>
-                          <div className="py-2">
-                            <button
-                              onClick={() => handleNavClick("/profile")}
-                              className="w-full px-4 py-3 text-left hover:bg-gray-800/50 rounded-xl flex items-center gap-3 group/item"
-                            >
-                              <PersonIcon className="text-gray-400 group-hover/item:text-[#ff0066]" />
-                              <span>My Profile</span>
-                            </button>
+                          <div className="py-1">
                             <button
                               onClick={handleSignOut}
-                              className="w-full px-4 py-3 text-left hover:bg-red-500/10 rounded-xl flex items-center gap-3 group/item text-red-400 mt-1"
+                              className="w-full px-3 py-2 text-left hover:bg-red-500/10 rounded-lg flex items-center gap-2 group/item text-red-400 mt-1 text-sm"
                             >
-                              <LogoutIcon className="group-hover/item:scale-110 transition-transform" />
+                              <LogoutIcon className="group-hover/item:scale-110 transition-transform text-base" />
                               <span>Sign Out</span>
                             </button>
                           </div>
@@ -159,28 +138,13 @@ const Dashboard: React.FC = () => {
                 ) : (
                   <button
                     onClick={() => navigate("/login")}
-                    className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] text-white font-semibold hover:shadow-2xl hover:shadow-[#ff0066]/30 hover:scale-105 transition-all duration-300"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-linear-to-r from-emerald-600 to-yellow-600 text-white font-medium hover:from-emerald-500 hover:to-yellow-500 transition-all duration-300"
                   >
-                    <LoginIcon />
-                    <span>Sign In</span>
+                    <LoginIcon className="text-base" />
+                    <span className="text-sm">Sign In</span>
                   </button>
                 )}
               </div>
-            </div>
-          </div>
-
-          {/* Mobile Search Bar */}
-          <div className="lg:hidden py-4">
-            <div className="relative group">
-              <div className="absolute inset-0 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-              <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 z-10" />
-              <input
-                type="search"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search everything..."
-                className="relative w-full pl-12 pr-4 py-3.5 bg-gray-900/80 border border-gray-800/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#ff0066]/50 text-gray-100 placeholder-gray-500 backdrop-blur-sm"
-              />
             </div>
           </div>
         </div>
@@ -188,20 +152,20 @@ const Dashboard: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-gray-950/95 backdrop-blur-xl">
+        <div className="md:hidden fixed inset-0 z-40 bg-gray-950/95 backdrop-blur-sm">
           <div className="p-6 h-full overflow-y-auto">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-between mb-6">
               <div
                 className="flex items-center cursor-pointer"
                 onClick={() => handleNavClick("/")}
               >
-                <h1 className="text-2xl font-bold bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] bg-clip-text text-transparent">
+                <h1 className="text-xl font-bold bg-linear-to-r from-emerald-400 via-yellow-400 to-emerald-300 bg-clip-text text-transparent font-['Engagement']">
                   Blogify
                 </h1>
               </div>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2.5 rounded-xl hover:bg-gray-800/80"
+                className="p-2 rounded-lg hover:bg-gray-800/80"
               >
                 <CloseIcon className="text-gray-300" />
               </button>
@@ -209,36 +173,34 @@ const Dashboard: React.FC = () => {
 
             {/* User Info */}
             {(isLoggedIn || isRegistered) && (
-              <div className="mb-6 p-5 bg-linear-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-sm rounded-2xl border border-gray-800/50 shadow-xl">
-                <div className="flex items-center gap-4">
+              <div className="mb-4 p-4 bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-800/50">
+                <div className="flex items-center gap-3">
                   <div className="relative">
-                    <div className="w-14 h-14 rounded-xl bg-linear-to-br from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] flex items-center justify-center shadow-lg">
-                      <span className="font-bold text-white text-xl">
+                    <div className="w-12 h-12 rounded-lg bg-linear-to-br from-emerald-500 to-yellow-500 flex items-center justify-center shadow">
+                      <span className="font-bold text-white">
                         {(username || "U")[0].toUpperCase()}
                       </span>
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-500 border-2 border-gray-900"></div>
+                    <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-gray-900"></div>
                   </div>
                   <div>
-                    <p className="font-bold text-gray-100 text-lg">
+                    <p className="font-bold text-gray-100">
                       {username || "User"}
                     </p>
-                    <p className="text-sm text-gray-400">
-                      Elite Creator • Pro Plan
-                    </p>
+                    <p className="text-sm text-gray-400">Member • Basic Plan</p>
                   </div>
                 </div>
-                <div className="grid grid-cols-3 gap-3 mt-4">
-                  <div className="text-center p-3 bg-gray-900/60 rounded-xl">
-                    <p className="text-xl font-bold text-[#ff1a1a]">24</p>
+                <div className="grid grid-cols-3 gap-2 mt-3">
+                  <div className="text-center p-2 bg-gray-900/60 rounded-lg">
+                    <p className="text-lg font-bold text-emerald-400">24</p>
                     <p className="text-xs text-gray-400">Posts</p>
                   </div>
-                  <div className="text-center p-3 bg-gray-900/60 rounded-xl">
-                    <p className="text-xl font-bold text-[#ff0066]">1.2K</p>
+                  <div className="text-center p-2 bg-gray-900/60 rounded-lg">
+                    <p className="text-lg font-bold text-yellow-400">1.2K</p>
                     <p className="text-xs text-gray-400">Likes</p>
                   </div>
-                  <div className="text-center p-3 bg-gray-900/60 rounded-xl">
-                    <p className="text-xl font-bold text-[#ff00ff]">356</p>
+                  <div className="text-center p-2 bg-gray-900/60 rounded-lg">
+                    <p className="text-lg font-bold text-emerald-400">356</p>
                     <p className="text-xs text-gray-400">Views</p>
                   </div>
                 </div>
@@ -246,29 +208,29 @@ const Dashboard: React.FC = () => {
             )}
 
             {/* Mobile Navigation */}
-            <nav className="space-y-2 mb-8">
+            <nav className="space-y-1 mb-6">
               {navItems.map((item) => (
                 <button
                   key={item.path}
                   onClick={() => handleNavClick(item.path)}
-                  className={`w-full flex items-center gap-4 px-4 py-4 rounded-2xl transition-all duration-300 ${
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
                     activeNav === item.path
-                      ? "bg-linear-to-r from-[#ff1a1a]/20 via-[#ff0066]/20 to-[#ff00ff]/20 border-l-4 border-[#ff0066] shadow-lg shadow-[#ff0066]/10"
+                      ? "bg-linear-to-r from-emerald-500/10 to-yellow-500/10 border-l-4 border-emerald-500"
                       : "hover:bg-gray-800/50 text-gray-300 hover:text-gray-100"
                   }`}
                 >
                   <span
-                    className={`text-xl ${
+                    className={`text-base ${
                       activeNav === item.path
-                        ? "text-[#ff0066]"
+                        ? "text-emerald-400"
                         : "text-gray-400"
                     }`}
                   >
                     {item.icon}
                   </span>
-                  <span className="font-medium text-lg">{item.label}</span>
+                  <span className="font-medium">{item.label}</span>
                   {activeNav === item.path && (
-                    <div className="ml-auto w-2.5 h-2.5 rounded-full bg-linear-to-r from-[#ff1a1a] to-[#ff00ff] animate-pulse"></div>
+                    <div className="ml-auto w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
                   )}
                 </button>
               ))}
@@ -276,31 +238,29 @@ const Dashboard: React.FC = () => {
               {(isLoggedIn || isRegistered) && (
                 <button
                   onClick={handleSignOut}
-                  className="w-full flex items-center gap-4 px-4 py-4 mt-4 rounded-2xl bg-red-500/10 text-red-400 hover:bg-red-500/20"
+                  className="w-full flex items-center gap-3 px-4 py-3 mt-2 rounded-xl bg-red-500/10 text-red-400 hover:bg-red-500/20"
                 >
                   <LogoutIcon />
-                  <span className="font-medium text-lg">Sign Out</span>
+                  <span className="font-medium">Sign Out</span>
                 </button>
               )}
             </nav>
 
             {/* Mobile Stats */}
-            <div className="p-5 bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-sm rounded-2xl border border-gray-800/50">
-              <h4 className="font-semibold text-gray-300 mb-4 text-lg">
-                Today's Stats
-              </h4>
-              <div className="space-y-3">
+            <div className="p-4 bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-800/50">
+              <h4 className="font-medium text-gray-300 mb-3">Today's Stats</h4>
+              <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Engagement Rate</span>
-                  <span className="font-bold text-[#ff0066]">84.5%</span>
+                  <span className="text-gray-400 text-sm">Engagement</span>
+                  <span className="font-bold text-emerald-400">84.5%</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">New Followers</span>
-                  <span className="font-bold text-[#ff00ff]">+28</span>
+                  <span className="text-gray-400 text-sm">New Followers</span>
+                  <span className="font-bold text-yellow-400">+28</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Content Score</span>
-                  <span className="font-bold text-[#ff1a1a]">92/100</span>
+                  <span className="text-gray-400 text-sm">Content Score</span>
+                  <span className="font-bold text-emerald-400">92/100</span>
                 </div>
               </div>
             </div>
@@ -309,159 +269,160 @@ const Dashboard: React.FC = () => {
       )}
 
       {/* Main Content */}
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex gap-8">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex gap-6">
           {/* Desktop Sidebar */}
-          <aside className="hidden lg:block w-72 shrink-0">
-            <div className="sticky top-28">
+          <aside className="hidden lg:block w-64 shrink-0">
+            <div className="sticky top-24">
               {/* User Profile Card */}
               {isLoggedIn || isRegistered ? (
-                <div className="relative overflow-hidden bg-linear-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-xl rounded-3xl p-6 mb-8 border border-gray-800/50 shadow-2xl shadow-black/30">
-                  {/* linear Border Top */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
+                <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-2xl p-5 mb-6 border border-gray-800/50">
+                  {/* Accent Border Top */}
+                  {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
 
-                  <div className="flex items-center gap-4 mb-6">
+                  <div className="flex items-center gap-4 mb-4">
                     <div className="relative">
-                      <div className="w-16 h-16 rounded-2xl bg-linear-to-br from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] flex items-center justify-center shadow-xl">
-                        <span className="font-bold text-white text-2xl">
+                      <div className="w-12 h-12 rounded-lg bg-linear-to-br from-emerald-500 to-yellow-500 flex items-center justify-center shadow">
+                        <span className="font-bold text-white">
                           {(username || "U")[0].toUpperCase()}
                         </span>
                       </div>
-                      <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-green-500 border-3 border-gray-900 flex items-center justify-center">
+                      <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-gray-900 flex items-center justify-center">
                         <TrendingUpIcon
-                          sx={{ fontSize: "12px", color: "white" }}
+                          sx={{ fontSize: "10px", color: "white" }}
                         />
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-100 text-xl">
+                      <h3 className="font-bold text-gray-100">
                         {username || "Creator"}
                       </h3>
                       <p className="text-sm text-gray-400">
-                        Elite Creator • Pro Plan
+                        Member • Basic Plan
                       </p>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-3 mb-6">
-                    <div className="text-center p-3.5 bg-gray-900/60 rounded-xl">
-                      <p className="text-2xl font-bold text-[#ff1a1a]">24</p>
+                  <div className="grid grid-cols-3 gap-2 mb-4">
+                    <div className="text-center p-2.5 bg-gray-900/60 rounded-lg">
+                      <p className="text-lg font-bold text-emerald-400">24</p>
                       <p className="text-xs text-gray-400">Posts</p>
                     </div>
-                    <div className="text-center p-3.5 bg-gray-900/60 rounded-xl">
-                      <p className="text-2xl font-bold text-[#ff0066]">1.2K</p>
+                    <div className="text-center p-2.5 bg-gray-900/60 rounded-lg">
+                      <p className="text-lg font-bold text-yellow-400">1.2K</p>
                       <p className="text-xs text-gray-400">Likes</p>
                     </div>
-                    <div className="text-center p-3.5 bg-gray-900/60 rounded-xl">
-                      <p className="text-2xl font-bold text-[#ff00ff]">356</p>
+                    <div className="text-center p-2.5 bg-gray-900/60 rounded-lg">
+                      <p className="text-lg font-bold text-emerald-400">356</p>
                       <p className="text-xs text-gray-400">Views</p>
                     </div>
                   </div>
 
-                  <button className="w-full py-3.5 rounded-xl bg-linear-to-r from-[#ff1a1a]/10 via-[#ff0066]/10 to-[#ff00ff]/10 text-gray-100 font-semibold hover:from-[#ff1a1a]/20 hover:via-[#ff0066]/20 hover:to-[#ff00ff]/20 transition-all duration-300 border border-gray-800/50">
-                    View Full Profile
+                  <button className="w-full py-2.5 rounded-xl bg-linear-to-r from-emerald-500/10 to-yellow-500/10 text-gray-100 font-medium hover:from-emerald-500/20 hover:to-yellow-500/20 transition-all duration-300">
+                    View Profile
                   </button>
                 </div>
               ) : (
-                <div className="relative overflow-hidden bg-linear-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-xl rounded-3xl p-6 mb-8 border border-gray-800/50 shadow-2xl">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
-                  <h3 className="font-bold text-gray-100 text-xl mb-4">
-                    Join Blogify Pro
-                  </h3>
-                  <p className="text-gray-300 mb-6">
-                    Unlock premium features and grow your audience
-                    exponentially.
+                <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-2xl p-5 mb-6 border border-gray-800/50">
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div>
+                  <h3 className="font-bold text-gray-100 mb-3">Join Blogify</h3>
+                  <p className="text-gray-300 text-sm mb-4">
+                    Unlock features and grow your audience.
                   </p>
                   <button
                     onClick={() => navigate("/login")}
-                    className="w-full py-3.5 rounded-xl bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] text-white font-bold hover:shadow-2xl hover:shadow-[#ff0066]/30 transition-all duration-300"
+                    className="w-full py-2.5 rounded-xl bg-linear-to-r from-emerald-600 to-yellow-600 text-white font-medium hover:from-emerald-500 hover:to-yellow-500 transition-all duration-300"
                   >
-                    Start Free Trial
+                    Get Started
                   </button>
                 </div>
               )}
 
               {/* Desktop Navigation */}
-              <div className="relative overflow-hidden bg-linear-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-xl rounded-3xl p-6 border border-gray-800/50 shadow-2xl shadow-black/30">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
+              <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-2xl p-5 border border-gray-800/50">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div>
 
-                <nav className="space-y-2">
+                <nav className="space-y-1">
                   {navItems.map((item) => (
                     <button
                       key={item.path}
                       onClick={() => handleNavClick(item.path)}
-                      className={`w-full flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 group ${
+                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 group ${
                         activeNav === item.path
-                          ? "bg-linear-to-r from-[#ff1a1a]/20 via-[#ff0066]/20 to-[#ff00ff]/20 border-l-4 border-[#ff0066] shadow-lg shadow-[#ff0066]/10"
+                          ? "bg-linear-to-r from-emerald-500/10 to-yellow-500/10 border-l-4 border-emerald-500"
                           : "hover:bg-gray-800/50 border-l-4 border-transparent"
                       }`}
                     >
                       <span
-                        className={`text-xl transition-all duration-300 ${
+                        className={`text-base transition-all duration-300 ${
                           activeNav === item.path
-                            ? "text-[#ff0066] scale-110"
+                            ? "text-emerald-400"
                             : "text-gray-400 group-hover:text-gray-300"
                         }`}
                       >
                         {item.icon}
                       </span>
                       <span
-                        className={`font-medium text-lg ${
+                        className={`font-medium ${
                           activeNav === item.path
-                            ? "text-gray-100 font-semibold"
+                            ? "text-gray-100"
                             : "text-gray-300 group-hover:text-gray-100"
                         }`}
                       >
                         {item.label}
                       </span>
                       {activeNav === item.path && (
-                        <div className="ml-auto w-2.5 h-2.5 rounded-full bg-linear-to-r from-[#ff1a1a] to-[#ff00ff] animate-pulse"></div>
+                        <div className="ml-auto w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
                       )}
                     </button>
                   ))}
                 </nav>
 
                 {/* Quick Stats */}
-                <div className="mt-8 p-5 bg-linear-to-br from-gray-900/60 to-gray-900/30 rounded-2xl border border-gray-800/50">
-                  <h4 className="font-semibold text-gray-300 mb-4 text-lg flex items-center gap-2">
+                <div className="mt-6 p-4 bg-gray-900/60 rounded-xl border border-gray-800/50">
+                  <h4 className="font-medium text-gray-300 mb-3 flex items-center gap-2">
                     <TrendingUpIcon
-                      sx={{ fontSize: "20px", color: "#ff0066" }}
+                      sx={{ fontSize: "18px", color: "#10b981" }}
                     />
                     Quick Stats
                   </h4>
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     <div>
                       <div className="flex justify-between text-sm mb-1">
-                        <span className="text-gray-400">Engagement Rate</span>
-                        <span className="font-bold text-[#ff0066]">84.5%</span>
+                        <span className="text-gray-400">Engagement</span>
+                        <span className="font-medium text-emerald-400">
+                          84.5%
+                        </span>
                       </div>
                       <div className="w-full h-1.5 bg-gray-800 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-linear-to-r from-[#ff1a1a] to-[#ff0066] rounded-full"
+                          className="h-full bg-linear-to-r from-emerald-500 to-yellow-500 rounded-full"
                           style={{ width: "84.5%" }}
                         ></div>
                       </div>
                     </div>
                     <div>
                       <div className="flex justify-between text-sm mb-1">
-                        <span className="text-gray-400">Growth Score</span>
-                        <span className="font-bold text-[#ff00ff]">92%</span>
+                        <span className="text-gray-400">Growth</span>
+                        <span className="font-medium text-yellow-400">92%</span>
                       </div>
                       <div className="w-full h-1.5 bg-gray-800 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-linear-to-r from-[#ff0066] to-[#ff00ff] rounded-full"
+                          className="h-full bg-linear-to-r from-emerald-500 to-yellow-500 rounded-full"
                           style={{ width: "92%" }}
                         ></div>
                       </div>
                     </div>
-                    <div className="pt-4 border-t border-gray-800/50">
-                      <div className="flex justify-between">
+                    <div className="pt-3 border-t border-gray-800/50">
+                      <div className="flex justify-between text-sm">
                         <span className="text-gray-400">Daily Views</span>
-                        <span className="font-bold text-[#ff1a1a]">1.2K</span>
+                        <span className="font-medium text-emerald-400">
+                          1.2K
+                        </span>
                       </div>
-                      <div className="flex justify-between mt-2">
-                        <span className="text-gray-400">New Followers</span>
-                        <span className="font-bold text-[#ff00ff]">+28</span>
+                      <div className="flex justify-between mt-1 text-sm">
+                        <span className="text-gray-400">Followers</span>
+                        <span className="font-medium text-yellow-400">+28</span>
                       </div>
                     </div>
                   </div>
@@ -472,12 +433,12 @@ const Dashboard: React.FC = () => {
 
           {/* Main Content Area */}
           <main className="flex-1 min-w-0">
-            <div className="relative overflow-hidden bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-xl rounded-3xl border border-gray-800/50 shadow-2xl shadow-black/30">
-              {/* linear Border Top */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
+            <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-800/50">
+              {/* Accent Border Top */}
+              {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
 
               {/* Main Content */}
-              <div className="p-8">
+              <div className="p-6">
                 <Outlet />
               </div>
             </div>
@@ -486,15 +447,15 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Mobile Bottom Bar */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-gray-900/90 backdrop-blur-xl border-t border-gray-800/50 shadow-2xl shadow-black/50">
-        <div className="flex justify-around py-3">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-gray-900/90 backdrop-blur-sm border-t border-gray-800/50 shadow-lg">
+        <div className="flex justify-around py-2">
           {navItems.slice(0, 5).map((item) => (
             <button
               key={item.path}
               onClick={() => handleNavClick(item.path)}
-              className={`flex flex-col items-center p-2.5 rounded-xl transition-all duration-300 ${
+              className={`flex flex-col items-center p-2 rounded-lg transition-all duration-300 ${
                 activeNav === item.path
-                  ? "text-[#ff0066] bg-linear-to-b from-[#ff0066]/10 to-transparent"
+                  ? "text-emerald-400 bg-linear-to-b from-emerald-500/10 to-transparent"
                   : "text-gray-400 hover:text-gray-300"
               }`}
             >

@@ -4,10 +4,10 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ShareIcon from "@mui/icons-material/Share";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
-import WhatshotIcon from "@mui/icons-material/Whatshot";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import StarIcon from "@mui/icons-material/Star";
+import WhatshotIcon from "@mui/icons-material/Whatshot";
+import PersonIcon from "@mui/icons-material/Person";
 import { useLikedPosts } from "./LikedPostContext";
 
 interface Post {
@@ -71,9 +71,9 @@ const Home: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen  flex items-center justify-center">
+      <div className="min-h-screen bg-linear-to-br from-gray-900 via-gray-950 to-black flex items-center justify-center">
         <div className="relative">
-          <div className="w-16 h-16 rounded-full bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] animate-spin"></div>
+          <div className="w-16 h-16 rounded-full bg-linear-to-r from-emerald-500 to-yellow-500 animate-spin"></div>
           <div className="absolute inset-4 bg-gray-950 rounded-full"></div>
         </div>
       </div>
@@ -82,135 +82,127 @@ const Home: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-        <div className="bg-gray-900/90 backdrop-blur-lg p-8 rounded-2xl border border-red-500/30 shadow-2xl shadow-red-500/10">
-          <div className="text-red-400 text-lg font-medium">{error}</div>
+      <div className="min-h-screen bg-linear-to-br from-gray-900 via-gray-950 to-black flex items-center justify-center">
+        <div className="bg-gray-900/80 backdrop-blur-sm p-8 rounded-2xl border border-emerald-500/30 shadow-lg">
+          <div className="text-emerald-400 text-lg font-medium">{error}</div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen text-gray-100 p-4 md:p-6 lg:p-8">
-      {/* Background Glow Effects */}
+    <div className="min-h-screen bg-linear-to-br from-gray-900 via-gray-950 to-black text-gray-100 p-4 md:p-6 lg:p-8">
+      {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-[#ff1a1a] rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse"></div>
-        <div className="absolute top-1/2 -right-40 w-96 h-96 bg-[#ff00ff] rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse delay-1000"></div>
-        <div className="absolute -bottom-40 left-1/2 w-80 h-80 bg-[#ff0066] rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse delay-500"></div>
+        <div className="absolute -top-20 -left-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 -right-20 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-20 left-1/3 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="mb-10 md:mb-14 lg:mb-16">
+        <div className="mb-8 md:mb-12 lg:mb-14">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
-                <span className="bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] bg-clip-text text-transparent">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
+                <span className="bg-linear-to-r from-emerald-400 via-yellow-400 to-emerald-300 bg-clip-text text-transparent">
                   Community Hub
                 </span>
               </h1>
-              <p className="text-gray-400 text-lg md:text-xl max-w-2xl">
-                Discover trending content and elite creators in our vibrant
-                community
+              <p className="text-gray-400 text-base md:text-lg max-w-2xl">
+                Discover trending content and connect with top creators
               </p>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="hidden md:flex items-center gap-2 bg-gray-900/80 backdrop-blur-sm px-4 py-2.5 rounded-2xl border border-gray-800">
-                <WhatshotIcon className="text-[#ff1a1a]" />
+              <div className="hidden md:flex items-center gap-2 bg-gray-900/80 backdrop-blur-sm px-4 py-2 rounded-xl border border-gray-800">
+                <WhatshotIcon className="text-emerald-400" />
                 <span className="text-gray-300 font-medium">
                   {posts.length} Active Posts
                 </span>
               </div>
-              <div className="bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] p-0.5 rounded-2xl">
-                <button className="bg-gray-950 hover:bg-gray-900 px-6 py-2.5 rounded-[14px] font-semibold transition-all duration-300">
-                  Explore More
-                </button>
-              </div>
+              <button className="px-5 py-2.5 bg-linear-to-r from-emerald-600 to-yellow-600 hover:from-emerald-500 hover:to-yellow-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-0.5">
+                Explore More
+              </button>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
           {/* Left Column - Top Users */}
           <div className="lg:col-span-1">
             <div className="sticky top-6">
-              <div className="relative overflow-hidden rounded-3xl bg-gray-900/60 backdrop-blur-xl border border-gray-800 p-6 shadow-2xl shadow-black/50">
-                {/* Header Glow Effect */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
+              <div className="relative overflow-hidden rounded-2xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 p-6 shadow-lg">
+                {/* Accent Border */}
+                {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
 
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-linear-to-br from-[#ff1a1a]/20 to-[#ff00ff]/20 rounded-xl">
-                      <StarIcon className="text-[#ff0066]" />
-                    </div>
-                    <h2 className="text-2xl font-bold text-gray-100">
-                      Elite Creators
-                    </h2>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-linear-to-br from-emerald-500/20 to-yellow-500/20 rounded-lg">
+                    <StarIcon className="text-emerald-400" />
                   </div>
+                  <h2 className="text-xl font-bold text-gray-100">
+                    Top Creators
+                  </h2>
                 </div>
 
                 <div className="space-y-4">
                   {topPosts.map((post, index) => (
                     <div
                       key={post.id}
-                      className="group relative overflow-hidden rounded-2xl bg-gray-900/80 backdrop-blur-sm p-5 border border-gray-800 hover:border-[#ff0066]/50 transition-all duration-500 hover:shadow-xl hover:shadow-[#ff0066]/10"
+                      className="group relative overflow-hidden rounded-xl bg-gray-900/60 p-4 border border-gray-800/50 hover:border-emerald-500/30 transition-all duration-300"
                     >
                       {/* Rank Badge */}
                       <div
-                        className={`absolute -top-2 -left-2 w-10 h-10 rounded-xl flex items-center justify-center font-bold text-lg shadow-lg ${
+                        className={`absolute -top-2 -left-2 w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm shadow ${
                           index === 0
-                            ? "bg-linear-to-br from-yellow-500 to-yellow-700 text-gray-900"
+                            ? "bg-linear-to-br from-yellow-500 to-yellow-600 text-gray-900"
                             : index === 1
-                            ? "bg-linear-to-br from-gray-400 to-gray-600 text-gray-900"
+                            ? "bg-linear-to-br from-gray-400 to-gray-500 text-gray-900"
                             : index === 2
-                            ? "bg-linear-to-br from-amber-700 to-amber-900 text-gray-100"
+                            ? "bg-linear-to-br from-amber-700 to-amber-800 text-gray-100"
                             : "bg-linear-to-br from-gray-800 to-gray-900 text-gray-400"
                         }`}
                       >
                         #{index + 1}
                       </div>
 
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-4">
-                          <div className="relative">
-                            <div className="w-14 h-14 rounded-xl bg-linear-to-br from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                              {[...post.username][0].toUpperCase()}
-                            </div>
-                            <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-gray-950 border-2 border-gray-900 flex items-center justify-center">
-                              <TrendingUpIcon
-                                sx={{ fontSize: "14px", color: "#ff1a1a" }}
-                              />
-                            </div>
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="relative">
+                          <div className="w-12 h-12 rounded-xl bg-linear-to-br from-emerald-500 to-yellow-500 flex items-center justify-center text-white font-bold text-lg shadow">
+                            <PersonIcon className="text-white" />
                           </div>
-                          <div>
-                            <h3 className="font-bold text-gray-100 text-lg">
-                              {post.username}
-                            </h3>
-                            <p className="text-sm text-gray-400">
-                              Verified Creator
-                            </p>
+                          <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-gray-950 border-2 border-gray-900 flex items-center justify-center">
+                            <TrendingUpIcon
+                              sx={{ fontSize: "12px", color: "#10b981" }}
+                            />
                           </div>
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-gray-100">
+                            {post.username}
+                          </h3>
+                          <p className="text-xs text-gray-400">
+                            Verified Creator
+                          </p>
                         </div>
                       </div>
 
-                      <p className="text-gray-300 text-sm mb-5 line-clamp-2 pl-1">
+                      <p className="text-gray-300 text-sm mb-4 line-clamp-2">
                         {post.description}
                       </p>
 
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 bg-gray-950/80 px-3 py-2 rounded-xl">
-                          <VolunteerActivismIcon
-                            className="text-[#ff0066]"
-                            sx={{ fontSize: "20px" }}
+                        <div className="flex items-center gap-2 bg-gray-950/80 px-3 py-1.5 rounded-lg">
+                          <VisibilityIcon
+                            className="text-emerald-400"
+                            sx={{ fontSize: "16px" }}
                           />
-                          <span className="font-bold text-gray-100">
+                          <span className="font-bold text-gray-100 text-sm">
                             {post.views.toLocaleString()}
                           </span>
-                          <span className="text-xs text-gray-400">views</span>
                         </div>
 
-                        <button className="px-4 py-2 rounded-xl bg-linear-to-r from-[#ff1a1a]/10 via-[#ff0066]/10 to-[#ff00ff]/10 text-[#ff0066] font-semibold text-sm hover:from-[#ff1a1a]/20 hover:via-[#ff0066]/20 hover:to-[#ff00ff]/20 transition-all duration-300 group-hover:scale-105">
+                        <button className="px-3 py-1.5 rounded-lg bg-linear-to-r from-emerald-500/10 to-yellow-500/10 text-emerald-400 text-sm font-medium hover:from-emerald-500/20 hover:to-yellow-500/20 transition-all duration-300">
                           Follow
                         </button>
                       </div>
@@ -223,30 +215,29 @@ const Home: React.FC = () => {
 
           {/* Right Column - Trending Posts */}
           <div className="lg:col-span-2">
-            <div className="relative overflow-hidden rounded-3xl bg-gray-900/60 backdrop-blur-xl border border-gray-800 p-6 mb-8 shadow-2xl shadow-black/50">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
+            <div className="relative overflow-hidden rounded-2xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 p-6 mb-6 shadow-lg">
+              {/* Accent Border */}
+              {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
 
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                 <div className="flex items-center gap-4">
-                  <div className="p-2 bg-linear-to-br from-[#ff1a1a]/20 to-[#ff00ff]/20 rounded-xl">
-                    <WhatshotIcon className="text-[#ff1a1a]" />
+                  <div className="p-2 bg-linear-to-br from-emerald-500/20 to-yellow-500/20 rounded-lg">
+                    <WhatshotIcon className="text-emerald-400" />
                   </div>
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-100">
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-100">
                       Trending Now
                     </h2>
-                    <p className="text-gray-400">
+                    <p className="text-gray-400 text-sm">
                       Most engaging content from the community
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="px-4 py-2 rounded-xl bg-linear-to-r from-[#ff1a1a]/10 via-[#ff0066]/10 to-[#ff00ff]/10 border border-[#ff0066]/30">
-                    <span className="text-sm font-semibold bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] bg-clip-text text-transparent">
-                      🔥 Hot Today
-                    </span>
-                  </div>
+                <div className="px-4 py-2 rounded-lg bg-linear-to-r from-emerald-500/10 to-yellow-500/10 border border-emerald-500/30">
+                  <span className="text-sm font-semibold text-emerald-400">
+                    🔥 Hot Today
+                  </span>
                 </div>
               </div>
 
@@ -259,40 +250,36 @@ const Home: React.FC = () => {
                   return (
                     <div
                       key={post.id}
-                      className="group relative overflow-hidden rounded-2xl bg-gray-900/80 backdrop-blur-sm p-6 border border-gray-800 hover:border-[#ff00ff]/30 transition-all duration-500 hover:shadow-xl hover:shadow-[#ff00ff]/5"
+                      className="relative overflow-hidden rounded-xl bg-gray-900/60 p-5 border border-gray-800/50 hover:border-emerald-500/30 transition-all duration-300 group"
                     >
-                      {/* Post Glow Effect */}
+                      {/* Draft Badge */}
                       {post.isDraft && (
-                        <div className="absolute top-0 right-0 bg-linear-to-l from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] text-gray-900 px-4 py-1 rounded-bl-lg font-bold text-sm shadow-lg">
+                        <div className="absolute top-0 right-0 bg-linear-to-l from-emerald-500 to-yellow-500 text-gray-900 px-3 py-1 rounded-bl-lg font-bold text-xs shadow">
                           DRAFT
                         </div>
                       )}
 
                       {/* User Info */}
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="flex items-center gap-4">
-                          <div className="relative">
-                            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] flex items-center justify-center text-white font-bold shadow-lg">
-                              {[...post.username][0].toUpperCase()}
-                            </div>
-                          </div>
-                          <div>
-                            <h3 className="font-bold text-gray-100 text-lg">
-                              {post.username}
-                            </h3>
-                            <p className="text-sm text-gray-400">
-                              Just now • 5 min read
-                            </p>
-                          </div>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 rounded-lg bg-linear-to-br from-emerald-500 to-yellow-500 flex items-center justify-center text-white font-bold shadow">
+                          {[...post.username][0].toUpperCase()}
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-gray-100">
+                            {post.username}
+                          </h3>
+                          <p className="text-xs text-gray-400">
+                            Just now • 5 min read
+                          </p>
                         </div>
                       </div>
 
                       {/* Post Content */}
-                      <div className="mb-8">
-                        <p className="text-gray-200 text-lg leading-relaxed">
-                          {post.postContent.slice(0, 180)}
-                          {post.postContent.length > 180 && (
-                            <span className="ml-2 cursor-pointer font-semibold bg-linear-to-r from-[#ff0066] to-[#ff00ff] bg-clip-text text-transparent hover:underline">
+                      <div className="mb-6">
+                        <p className="text-gray-200 leading-relaxed">
+                          {post.postContent.slice(0, 160)}
+                          {post.postContent.length > 160 && (
+                            <span className="ml-2 cursor-pointer font-medium text-emerald-400 hover:underline">
                               ...Read more
                             </span>
                           )}
@@ -300,51 +287,51 @@ const Home: React.FC = () => {
                       </div>
 
                       {/* Stats Bar */}
-                      <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-gray-800">
-                        <div className="flex items-center gap-3">
+                      <div className="flex flex-wrap items-center justify-between gap-4 pt-5 border-t border-gray-800/50">
+                        <div className="flex items-center gap-2">
                           {/* Like Button */}
                           <button
                             onClick={() => handleLike(post)}
-                            className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 ${
+                            className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 ${
                               isLiked
-                                ? "bg-linear-to-r from-[#ff1a1a]/20 via-[#ff0066]/20 to-[#ff00ff]/20 text-[#ff0066] shadow-lg shadow-[#ff0066]/10"
-                                : "bg-gray-900/80 text-gray-400 hover:text-[#ff0066] hover:bg-gray-800/80 hover:shadow-lg hover:shadow-[#ff0066]/5"
+                                ? "bg-linear-to-r from-emerald-500/20 to-yellow-500/20 text-emerald-400"
+                                : "bg-gray-900/80 text-gray-400 hover:text-emerald-400 hover:bg-gray-800/80"
                             }`}
                           >
                             {isLiked ? (
-                              <ThumbUpIcon sx={{ fontSize: "22px" }} />
+                              <ThumbUpIcon sx={{ fontSize: "20px" }} />
                             ) : (
-                              <ThumbUpOffAltIcon sx={{ fontSize: "22px" }} />
+                              <ThumbUpOffAltIcon sx={{ fontSize: "20px" }} />
                             )}
-                            <span className="font-bold">{post.likes}</span>
+                            <span className="font-medium">{post.likes}</span>
                           </button>
 
                           {/* Comments */}
-                          <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-gray-900/80 text-gray-400 hover:text-[#ff00ff] hover:bg-gray-800/80 hover:shadow-lg hover:shadow-[#ff00ff]/5 transition-all duration-300 cursor-pointer">
-                            <ChatBubbleOutlineIcon sx={{ fontSize: "22px" }} />
-                            <span className="font-bold">{post.comments}</span>
+                          <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-900/80 text-gray-400 hover:text-yellow-400 hover:bg-gray-800/80 transition-all duration-300 cursor-pointer">
+                            <ChatBubbleOutlineIcon sx={{ fontSize: "20px" }} />
+                            <span className="font-medium">{post.comments}</span>
                           </div>
 
                           {/* Shares */}
-                          <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-gray-900/80 text-gray-400 hover:text-[#ff1a1a] hover:bg-gray-800/80 hover:shadow-lg hover:shadow-[#ff1a1a]/5 transition-all duration-300 cursor-pointer">
-                            <ShareIcon sx={{ fontSize: "22px" }} />
-                            <span className="font-bold">{post.shares}</span>
+                          <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-900/80 text-gray-400 hover:text-emerald-400 hover:bg-gray-800/80 transition-all duration-300 cursor-pointer">
+                            <ShareIcon sx={{ fontSize: "20px" }} />
+                            <span className="font-medium">{post.shares}</span>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-3">
                           {/* Views */}
-                          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-950/80">
+                          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-950/80">
                             <VisibilityIcon
-                              sx={{ fontSize: "20px", color: "#888" }}
+                              sx={{ fontSize: "18px", color: "#9ca3af" }}
                             />
-                            <span className="font-bold text-gray-300">
+                            <span className="font-medium text-gray-300">
                               {post.views.toLocaleString()}
                             </span>
                           </div>
 
                           {/* Share Button */}
-                          <button className="px-5 py-2.5 rounded-xl bg-linear-to-r from-[#ff1a1a]/10 via-[#ff0066]/10 to-[#ff00ff]/10 text-gray-300 font-semibold hover:from-[#ff1a1a]/20 hover:via-[#ff0066]/20 hover:to-[#ff00ff]/20 transition-all duration-300 hover:scale-105 group-hover:shadow-lg group-hover:shadow-[#ff00ff]/10">
+                          <button className="px-4 py-2 rounded-lg bg-linear-to-r from-emerald-500/10 to-yellow-500/10 text-gray-300 font-medium hover:from-emerald-500/20 hover:to-yellow-500/20 transition-all duration-300">
                             Share
                           </button>
                         </div>
@@ -356,7 +343,7 @@ const Home: React.FC = () => {
 
               {/* Load More Button */}
               <div className="mt-8 flex justify-center">
-                <button className="px-8 py-3.5 rounded-2xl bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] text-white font-bold text-lg shadow-2xl shadow-[#ff0066]/30 hover:shadow-[#ff0066]/50 hover:scale-105 transition-all duration-300">
+                <button className="px-6 py-3 rounded-xl bg-linear-to-r from-emerald-600 to-yellow-600 text-white font-bold hover:from-emerald-500 hover:to-yellow-500 hover:scale-105 transition-all duration-300">
                   Load More Posts
                 </button>
               </div>

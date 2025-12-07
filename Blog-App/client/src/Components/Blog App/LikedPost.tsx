@@ -5,8 +5,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ShareIcon from "@mui/icons-material/Share";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
-import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import FilterListIcon from "@mui/icons-material/FilterList";
@@ -14,7 +13,8 @@ import SortIcon from "@mui/icons-material/Sort";
 import DownloadIcon from "@mui/icons-material/Download";
 import StarIcon from "@mui/icons-material/Star";
 import PeopleIcon from "@mui/icons-material/People";
-import BoltIcon from "@mui/icons-material/Bolt";
+import PersonIcon from "@mui/icons-material/Person";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { toast, Toaster } from "react-hot-toast";
 
 const LikedPost: React.FC = () => {
@@ -30,20 +30,19 @@ const LikedPost: React.FC = () => {
     toast(
       (t) => (
         <div className="text-center">
-          <div className="w-16 h-16 rounded-full bg-linear-to-r from-[#ff1a1a]/20 to-[#ff0066]/20 flex items-center justify-center mx-auto mb-4">
-            <DeleteIcon className="text-[#ff1a1a]" />
+          <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
+            <DeleteIcon className="text-emerald-400" />
           </div>
-          <p className="font-semibold text-gray-100 mb-3">
+          <p className="font-semibold text-gray-100 mb-2">
             Clear your collection?
           </p>
           <p className="text-sm text-gray-400 mb-6">
-            This will remove all {likedPosts.length} liked posts from your
-            collection. This action cannot be undone.
+            This will remove all {likedPosts.length} liked posts.
           </p>
           <div className="flex gap-3">
             <button
               onClick={() => toast.dismiss(t.id)}
-              className="flex-1 px-4 py-2.5 bg-gray-800/50 hover:bg-gray-800 rounded-xl text-gray-300 font-semibold"
+              className="flex-1 px-4 py-2 bg-gray-800/50 hover:bg-gray-800 rounded-xl text-gray-300 font-medium"
             >
               Cancel
             </button>
@@ -53,14 +52,14 @@ const LikedPost: React.FC = () => {
                 toast.success("Collection cleared successfully", {
                   icon: "🗑️",
                   style: {
-                    background: "#0f172a",
+                    background: "#0a0f1e",
                     color: "#f1f5f9",
                     border: "1px solid #1e293b",
                   },
                 });
                 toast.dismiss(t.id);
               }}
-              className="flex-1 px-4 py-2.5 bg-linear-to-r from-[#ff1a1a] to-[#ff0066] text-white rounded-xl font-semibold"
+              className="flex-1 px-4 py-2 bg-linear-to-r from-emerald-600 to-yellow-600 text-white rounded-xl font-medium"
             >
               Clear All
             </button>
@@ -78,11 +77,6 @@ const LikedPost: React.FC = () => {
     .map((username) => ({
       username,
       count: likedPosts.filter((p) => p.username === username).length,
-      avatarColor: `from-[#${Math.floor(Math.random() * 16777215).toString(
-        16
-      )}] via-[#${Math.floor(Math.random() * 16777215).toString(
-        16
-      )}] to-[#${Math.floor(Math.random() * 16777215).toString(16)}]`,
     }))
     .sort((a, b) => b.count - a.count)
     .slice(0, 3);
@@ -95,85 +89,80 @@ const LikedPost: React.FC = () => {
   });
 
   return (
-    <div className="min-h-screne text-gray-100">
+    <div className="min-h-screen bg-linear-to-br from-gray-900 via-gray-950 to-black text-gray-100 p-4 md:p-6 lg:p-8">
       <Toaster
         position="top-right"
         toastOptions={{
           style: {
-            background: "#0f172a",
+            background: "#0a0f1e",
             color: "#fff",
             border: "1px solid #1e293b",
           },
         }}
       />
 
-      {/* Background Glow Effects */}
+      {/* Background Effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#ff1a1a] rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse"></div>
-        <div className="absolute top-1/2 -left-40 w-96 h-96 bg-[#ff00ff] rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse delay-1000"></div>
-        <div className="absolute -bottom-40 left-1/3 w-80 h-80 bg-[#ff0066] rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-pulse delay-500"></div>
+        <div className="absolute -top-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 -left-20 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-20 left-1/3 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative z-10 max-w-8xl mx-auto p-6 lg:p-8">
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="mb-10">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-10">
+        <div className="mb-8">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-6">
             <div className="flex items-center gap-4">
-              <div className="relative">
-                <div className="w-16 h-16 rounded-2xl bg-linear-to-br from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] flex items-center justify-center shadow-xl shadow-[#ff0066]/30">
-                  <FavoriteIcon className="text-white text-3xl" />
-                </div>
-                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-linear-to-br from-yellow-500 to-orange-500 flex items-center justify-center shadow-lg">
-                  <StarIcon sx={{ fontSize: "14px", color: "white" }} />
-                </div>
+              <div className="w-12 h-12 rounded-xl bg-linear-to-br from-emerald-500 to-yellow-500 flex items-center justify-center shadow-lg">
+                <FavoriteIcon className="text-white" />
               </div>
               <div>
-                <h1 className="text-3xl lg:text-4xl font-bold text-gray-100">
-                  Elite Collection
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-100">
+                  Liked Posts
                 </h1>
-                <p className="text-gray-400 mt-2">
-                  Curated collection of your favorite premium content
+                <p className="text-gray-400 text-sm">
+                  Your collection of liked content
                 </p>
               </div>
             </div>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="relative overflow-hidden bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-sm rounded-2xl p-5 border border-gray-800/50 min-w-40">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
-                <p className="text-sm text-gray-400 mb-2">Total Curated</p>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+              <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 border border-gray-800/50">
+                {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
+                <p className="text-xs text-gray-400 mb-2">Total Liked</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-3xl font-bold bg-linear-to-r from-[#ff1a1a] to-[#ff0066] bg-clip-text text-transparent">
+                  <p className="text-xl font-bold text-emerald-400">
                     {likedPosts.length}
                   </p>
-                  <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#ff1a1a]/20 to-[#ff00ff]/20 flex items-center justify-center">
-                    <FavoriteIcon className="text-[#ff0066]" />
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                    <FavoriteIcon className="text-emerald-400" />
                   </div>
                 </div>
               </div>
 
-              <div className="relative overflow-hidden bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-sm rounded-2xl p-5 border border-gray-800/50 min-w-40">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff0066] to-[#ff00ff]"></div>
-                <p className="text-sm text-gray-400 mb-2">This Month</p>
+              <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 border border-gray-800/50">
+                {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
+                <p className="text-xs text-gray-400 mb-2">This Month</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-3xl font-bold bg-linear-to-r from-[#ff0066] to-[#ff00ff] bg-clip-text text-transparent">
+                  <p className="text-xl font-bold text-yellow-400">
                     {Math.floor(likedPosts.length * 0.4)}
                   </p>
-                  <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#ff0066]/20 to-[#ff00ff]/20 flex items-center justify-center">
-                    <TrendingUpIcon className="text-[#ff00ff]" />
+                  <div className="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center">
+                    <TrendingUpIcon className="text-yellow-400" />
                   </div>
                 </div>
               </div>
 
-              <div className="relative overflow-hidden bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-sm rounded-2xl p-5 border border-gray-800/50 min-w-40">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] to-[#ff00ff]"></div>
-                <p className="text-sm text-gray-400 mb-2">Unique Creators</p>
+              <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 border border-gray-800/50">
+                {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
+                <p className="text-xs text-gray-400 mb-2">Unique Creators</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-3xl font-bold bg-linear-to-r from-[#ff1a1a] to-[#ff00ff] bg-clip-text text-transparent">
+                  <p className="text-xl font-bold text-emerald-400">
                     {topCreators.length}
                   </p>
-                  <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#ff1a1a]/20 to-[#ff00ff]/20 flex items-center justify-center">
-                    <PeopleIcon className="text-[#ff0066]" />
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                    <PeopleIcon className="text-emerald-400" />
                   </div>
                 </div>
               </div>
@@ -181,45 +170,44 @@ const LikedPost: React.FC = () => {
           </div>
 
           {/* Filters and Actions */}
-          <div className="relative overflow-hidden bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-xl rounded-3xl p-6 border border-gray-800/50 mb-8 shadow-2xl shadow-black/30">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
+          <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50 mb-6">
+            {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
 
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-              <div className="flex flex-wrap items-center gap-4">
-                <button className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 text-gray-300 font-semibold hover:border-[#ff0066]/30 transition-all duration-300">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gray-900/60 border border-gray-800/50 text-gray-300 font-medium hover:border-emerald-500/30 transition-all duration-300">
                   <FilterListIcon />
-                  Filter Content
+                  Filter
                 </button>
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-2 text-gray-400">
-                    <SortIcon sx={{ fontSize: "20px" }} />
-                    <span>Sort by:</span>
+                    <SortIcon sx={{ fontSize: "18px" }} />
+                    <span className="text-sm">Sort:</span>
                   </div>
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="bg-gray-900/80 border border-gray-800/50 rounded-2xl px-4 py-2.5 text-gray-100 focus:outline-none focus:ring-2 focus:ring-[#ff0066]/50 backdrop-blur-sm"
+                    className="bg-gray-900/60 border border-gray-800/50 rounded-xl px-3 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 text-sm"
                   >
                     <option value="recent">Most Recent</option>
                     <option value="likes">Most Liked</option>
                     <option value="views">Most Viewed</option>
-                    <option value="comments">Most Comments</option>
                   </select>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
-                <button className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 text-gray-300 font-semibold hover:border-[#ff0066]/30 transition-all duration-300">
+              <div className="flex items-center gap-2">
+                <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gray-900/60 border border-gray-800/50 text-gray-300 font-medium hover:border-emerald-500/30 transition-all duration-300">
                   <DownloadIcon />
-                  Export Collection
+                  Export
                 </button>
                 {likedPosts.length > 0 && (
                   <button
                     onClick={handleRemoveAll}
-                    className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-linear-to-r from-[#ff1a1a]/20 to-[#ff0066]/20 text-[#ff0066] font-semibold hover:from-[#ff1a1a]/30 hover:to-[#ff0066]/30 transition-all duration-300"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-linear-to-r from-emerald-500/10 to-yellow-500/10 text-emerald-400 font-medium hover:from-emerald-500/20 hover:to-yellow-500/20 transition-all duration-300"
                   >
                     <DeleteIcon />
-                    Clear Collection
+                    Clear All
                   </button>
                 )}
               </div>
@@ -229,32 +217,30 @@ const LikedPost: React.FC = () => {
 
         {/* Main Content */}
         {likedPosts.length > 0 ? (
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {/* Left Column - Stats & Info */}
             <div className="lg:col-span-1">
-              <div className="sticky top-8 space-y-6">
+              <div className="sticky top-6 space-y-6">
                 {/* User Stats */}
-                <div className="relative overflow-hidden bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-xl rounded-3xl p-6 border border-gray-800/50 shadow-2xl shadow-black/30">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
+                <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
+                  {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
 
-                  <h3 className="text-xl font-bold text-gray-100 mb-6 flex items-center gap-3">
-                    <BoltIcon className="text-[#ff0066]" />
-                    Collection Insights
+                  <h3 className="text-lg font-bold text-gray-100 mb-4 flex items-center gap-3">
+                    <CheckCircleIcon className="text-emerald-400" />
+                    Insights
                   </h3>
-                  <div className="space-y-5">
-                    <div className="flex items-center justify-between group">
-                      <span className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                        Total Items
-                      </span>
-                      <span className="font-bold bg-linear-to-r from-[#ff1a1a] to-[#ff0066] bg-clip-text text-transparent">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400 text-sm">Total Items</span>
+                      <span className="font-medium text-emerald-400">
                         {likedPosts.length}
                       </span>
                     </div>
-                    <div className="flex items-center justify-between group">
-                      <span className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400 text-sm">
                         Avg. Engagement
                       </span>
-                      <span className="font-bold bg-linear-to-r from-[#ff0066] to-[#ff00ff] bg-clip-text text-transparent">
+                      <span className="font-medium text-yellow-400">
                         {likedPosts.length > 0
                           ? Math.round(
                               likedPosts.reduce(
@@ -271,84 +257,77 @@ const LikedPost: React.FC = () => {
                           : 0}
                       </span>
                     </div>
-                    <div className="flex items-center justify-between group">
-                      <span className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                        Peak Activity
-                      </span>
-                      <span className="font-bold text-gray-100">Today</span>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400 text-sm">Peak Activity</span>
+                      <span className="font-medium text-gray-100">Today</span>
                     </div>
-                    <div className="flex items-center justify-between group">
-                      <span className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                        Avg. View Score
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400 text-sm">
+                        Avg. Views
                       </span>
-                      <span className="font-bold bg-linear-to-r from-[#ff1a1a] to-[#ff00ff] bg-clip-text text-transparent">
+                      <span className="font-medium text-emerald-400">
                         {likedPosts.length > 0
                           ? Math.round(
                               likedPosts.reduce(
                                 (acc, post) => acc + post.views,
                                 0
-                              ) /
-                                likedPosts.length /
-                                1000
-                            )
+                              ) / likedPosts.length
+                            ).toLocaleString()
                           : 0}
-                        K
                       </span>
                     </div>
                   </div>
                 </div>
 
                 {/* Quick Actions */}
-                <div className="relative overflow-hidden bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-xl rounded-3xl p-6 border border-gray-800/50 shadow-2xl shadow-black/30">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff0066] to-[#ff00ff]"></div>
+                <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
+                  {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
 
-                  <h3 className="text-xl font-bold text-gray-100 mb-6 flex items-center gap-3">
-                    <StarIcon className="text-[#ff0066]" />
+                  <h3 className="text-lg font-bold text-gray-100 mb-4 flex items-center gap-3">
+                    <StarIcon className="text-emerald-400" />
                     Quick Actions
                   </h3>
-                  <div className="space-y-3">
-                    <button className="w-full py-3.5 rounded-xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 text-gray-300 hover:text-[#ff0066] hover:border-[#ff0066]/30 transition-all duration-300 font-semibold">
+                  <div className="space-y-2">
+                    <button className="w-full py-3 rounded-xl bg-gray-900/60 border border-gray-800/50 text-gray-300 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-300 font-medium">
                       Discover Similar
                     </button>
-                    <button className="w-full py-3.5 rounded-xl bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] text-white font-semibold hover:shadow-lg hover:shadow-[#ff0066]/20 transition-all duration-300">
+                    <button className="w-full py-3 rounded-xl bg-linear-to-r from-emerald-600 to-yellow-600 text-white font-medium hover:from-emerald-500 hover:to-yellow-500 transition-all duration-300">
                       Share Collection
-                    </button>
-                    <button className="w-full py-3.5 rounded-xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 text-gray-300 hover:text-[#ff00ff] hover:border-[#ff00ff]/30 transition-all duration-300 font-semibold">
-                      View Analytics
                     </button>
                   </div>
                 </div>
 
                 {/* Top Creators */}
-                <div className="relative overflow-hidden bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-xl rounded-3xl p-6 border border-gray-800/50 shadow-2xl shadow-black/30">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] to-[#ff00ff]"></div>
+                <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50">
+                  {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
 
-                  <h3 className="text-xl font-bold text-gray-100 mb-6 flex items-center gap-3">
-                    <PeopleIcon className="text-[#ff0066]" />
+                  <h3 className="text-lg font-bold text-gray-100 mb-4 flex items-center gap-3">
+                    <PeopleIcon className="text-emerald-400" />
                     Top Creators
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     {topCreators.map((creator, index) => (
                       <div
                         key={index}
-                        className="flex items-center justify-between p-4 rounded-2xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 hover:border-[#ff0066]/30 transition-all duration-300 group"
+                        className="flex items-center justify-between p-3 rounded-xl bg-gray-900/60 border border-gray-800/50 hover:border-emerald-500/30 transition-all duration-300"
                       >
                         <div className="flex items-center gap-3">
-                          <div className="flex items-center gap-1 mt-1">
-                            {[...Array(Math.min(creator.count, 5))].map(
-                              (_, i) => (
-                                <StarIcon
-                                  key={i}
-                                  sx={{ fontSize: "10px", color: "#ff0066" }}
-                                />
-                              )
-                            )}
+                          <div className="w-8 h-8 rounded-lg bg-linear-to-br from-emerald-500 to-yellow-500 flex items-center justify-center">
+                            <PersonIcon className="text-white text-xs" />
                           </div>
                           <div>
-                            <span className="font-bold text-gray-100">
+                            <span className="font-medium text-gray-100 text-sm">
                               {creator.username}
                             </span>
                           </div>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <StarIcon
+                            sx={{ fontSize: "12px", color: "#eab308" }}
+                          />
+                          <span className="text-sm text-gray-300">
+                            {creator.count}
+                          </span>
                         </div>
                       </div>
                     ))}
@@ -359,33 +338,33 @@ const LikedPost: React.FC = () => {
 
             {/* Right Column - Liked Posts */}
             <div className="lg:col-span-3">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {sortedPosts.map((post) => (
                   <div
                     key={post.id}
-                    className="group relative overflow-hidden rounded-3xl transition-all duration-500 hover:scale-[1.02]"
+                    className="group relative overflow-hidden rounded-xl border border-gray-800/50 hover:border-emerald-500/30 transition-all duration-300"
                   >
-                    {/* linear Border */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    {/* Accent Border */}
+                    {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
 
-                    <div className="bg-linear-to-br from-gray-900/60 to-gray-900/30 backdrop-blur-sm border border-gray-800/50 group-hover:border-[#ff0066]/30 p-6">
+                    <div className="bg-gray-900/80 p-4">
                       {/* Post Header */}
-                      <div className="flex items-start justify-between mb-5">
-                        <div className="flex items-center gap-4">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-center gap-3">
                           <div className="relative">
-                            <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] flex items-center justify-center shadow-lg">
-                              <span className="text-white text-xl font-bold">
+                            <div className="w-10 h-10 rounded-lg bg-linear-to-br from-emerald-500 to-yellow-500 flex items-center justify-center shadow">
+                              <span className="text-white font-bold">
                                 {post.username[0].toUpperCase()}
                               </span>
                             </div>
-                            <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-500 border-2 border-gray-900"></div>
+                            <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-gray-900"></div>
                           </div>
                           <div>
-                            <h3 className="font-bold text-gray-100 text-lg">
+                            <h3 className="font-bold text-gray-100 text-sm">
                               {post.username}
                             </h3>
-                            <div className="flex items-center gap-2 text-sm text-gray-400 mt-1">
-                              <CalendarTodayIcon sx={{ fontSize: 14 }} />
+                            <div className="flex items-center gap-2 text-xs text-gray-400 mt-0.5">
+                              <CalendarTodayIcon sx={{ fontSize: 12 }} />
                               <span>{getTimeAgo()}</span>
                             </div>
                           </div>
@@ -394,30 +373,30 @@ const LikedPost: React.FC = () => {
                         <button
                           onClick={() => {
                             removeLikedPost(post.id);
-                            toast.success("Removed from collection", {
+                            toast.success("Removed from liked posts", {
                               icon: "❤️",
                               style: {
-                                background: "#0f172a",
+                                background: "#0a0f1e",
                                 color: "#f1f5f9",
                                 border: "1px solid #1e293b",
                               },
                             });
                           }}
-                          className="p-2.5 rounded-xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 hover:border-[#ff1a1a]/30 text-gray-400 hover:text-[#ff1a1a] transition-all duration-300 group-hover:opacity-100"
-                          title="Remove from collection"
+                          className="p-2 rounded-lg bg-gray-900/60 border border-gray-800/50 hover:border-emerald-500/30 text-gray-400 hover:text-emerald-400 transition-all duration-300"
+                          title="Remove"
                         >
-                          <DeleteIcon sx={{ fontSize: "20px" }} />
+                          <DeleteIcon sx={{ fontSize: "16px" }} />
                         </button>
                       </div>
 
                       {/* Post Content */}
-                      <div className="mb-6">
-                        <div className="bg-gray-900/50 rounded-2xl p-5 group-hover:bg-gray-900/70 transition-colors duration-300">
-                          <p className="text-gray-200 leading-relaxed line-clamp-3">
+                      <div className="mb-4">
+                        <div className="bg-gray-900/50 rounded-lg p-3 group-hover:bg-gray-900/70 transition-colors duration-300">
+                          <p className="text-gray-200 text-sm leading-relaxed line-clamp-3">
                             {post.postContent}
                           </p>
                           {post.postContent.length > 200 && (
-                            <button className="mt-3 font-semibold bg-linear-to-r from-[#ff0066] to-[#ff00ff] bg-clip-text text-transparent hover:opacity-80 transition-opacity">
+                            <button className="mt-2 font-medium text-emerald-400 hover:text-emerald-300 transition-colors text-sm">
                               Continue reading...
                             </button>
                           )}
@@ -425,49 +404,49 @@ const LikedPost: React.FC = () => {
                       </div>
 
                       {/* Post Stats */}
-                      <div className="mb-6">
-                        <div className="grid grid-cols-4 gap-3">
-                          <div className="text-center p-4 rounded-2xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 group-hover:border-[#ff1a1a]/30 transition-all duration-300">
+                      <div className="mb-4">
+                        <div className="grid grid-cols-4 gap-2">
+                          <div className="text-center p-3 rounded-lg bg-gray-900/60 border border-gray-800/50 group-hover:border-emerald-500/30 transition-all duration-300">
                             <FavoriteIcon
-                              sx={{ fontSize: "20px", color: "#ff1a1a" }}
+                              sx={{ fontSize: "16px", color: "#ef4444" }}
                             />
-                            <p className="text-md font-bold text-gray-100 mt-2">
+                            <p className="text-sm font-bold text-gray-100 mt-1">
                               {post.likes.toLocaleString()}
                             </p>
                           </div>
-                          <div className="text-center p-4 rounded-2xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 group-hover:border-[#3b82f6]/30 transition-all duration-300">
+                          <div className="text-center p-3 rounded-lg bg-gray-900/60 border border-gray-800/50 group-hover:border-blue-500/30 transition-all duration-300">
                             <ChatBubbleOutlineIcon
-                              sx={{ fontSize: "20px", color: "#3b82f6" }}
+                              sx={{ fontSize: "16px", color: "#3b82f6" }}
                             />
-                            <p className="text-md font-bold text-gray-100 mt-2">
+                            <p className="text-sm font-bold text-gray-100 mt-1">
                               {post.comments.toLocaleString()}
                             </p>
                           </div>
-                          <div className="text-center p-4 rounded-2xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 group-hover:border-[#8b5cf6]/30 transition-all duration-300">
+                          <div className="text-center p-3 rounded-lg bg-gray-900/60 border border-gray-800/50 group-hover:border-purple-500/30 transition-all duration-300">
                             <ShareIcon
-                              sx={{ fontSize: "20px", color: "#8b5cf6" }}
+                              sx={{ fontSize: "16px", color: "#8b5cf6" }}
                             />
-                            <p className="text-md font-bold text-gray-100 mt-2">
+                            <p className="text-sm font-bold text-gray-100 mt-1">
                               {post.shares.toLocaleString()}
                             </p>
                           </div>
-                          <div className="text-center p-4 rounded-2xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 group-hover:border-[#10b981]/30 transition-all duration-300">
+                          <div className="text-center p-3 rounded-lg bg-gray-900/60 border border-gray-800/50 group-hover:border-emerald-500/30 transition-all duration-300">
                             <VisibilityIcon
-                              sx={{ fontSize: "20px", color: "#10b981" }}
+                              sx={{ fontSize: "16px", color: "#10b981" }}
                             />
-                            <p className="text-md font-bold text-gray-100 mt-2">
-                              {(post.views / 1000).toFixed(1)}
+                            <p className="text-sm font-bold text-gray-100 mt-1">
+                              {(post.views / 1000).toFixed(1)}k
                             </p>
                           </div>
                         </div>
                       </div>
 
                       {/* Action Buttons */}
-                      <div className="grid grid-cols-2 gap-3">
-                        <button className="py-3.5 rounded-xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 text-gray-300 hover:text-gray-100 hover:border-[#ff0066]/30 transition-all duration-300 font-semibold">
-                          View Full Post
+                      <div className="grid grid-cols-2 gap-2">
+                        <button className="py-2.5 rounded-lg bg-gray-900/60 border border-gray-800/50 text-gray-300 hover:text-gray-100 hover:border-emerald-500/30 transition-all duration-300 font-medium text-sm">
+                          View Post
                         </button>
-                        <button className="py-3.5 rounded-xl bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] text-white font-semibold hover:shadow-lg hover:shadow-[#ff0066]/20 transition-all duration-300">
+                        <button className="py-2.5 rounded-lg bg-linear-to-r from-emerald-600 to-yellow-600 text-white font-medium hover:from-emerald-500 hover:to-yellow-500 transition-all duration-300 text-sm">
                           Engage
                         </button>
                       </div>
@@ -477,28 +456,27 @@ const LikedPost: React.FC = () => {
               </div>
 
               {/* Footer Info */}
-              <div className="mt-10 pt-8 border-t border-gray-800/50">
-                <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-gray-900/40 to-gray-900/20 backdrop-blur-xl p-8 border border-gray-800/50 shadow-2xl shadow-black/30">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
+              <div className="mt-8 pt-6 border-t border-gray-800/50">
+                <div className="relative overflow-hidden rounded-2xl bg-gray-900/80 p-6 border border-gray-800/50">
+                  {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
 
-                  <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-                    <div className="flex items-center gap-6">
-                      <div className="w-20 h-20 rounded-2xl bg-linear-to-r from-[#ff1a1a]/20 via-[#ff0066]/20 to-[#ff00ff]/20 flex items-center justify-center">
-                        <VolunteerActivismIcon
-                          sx={{ fontSize: "40px", color: "#ff0066" }}
+                  <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-lg bg-linear-to-r from-emerald-500/10 to-yellow-500/10 flex items-center justify-center">
+                        <BookmarkIcon
+                          sx={{ fontSize: "24px", color: "#10b981" }}
                         />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-100">
-                          Support Elite Creators
+                        <h3 className="text-lg font-bold text-gray-100">
+                          Support Creators
                         </h3>
-                        <p className="text-gray-300 mt-2">
-                          Your curated collection helps premium creators grow
-                          and produce exceptional content
+                        <p className="text-gray-300 text-sm mt-1">
+                          Your likes help creators grow and produce great content
                         </p>
                       </div>
                     </div>
-                    <button className="px-8 py-3.5 rounded-2xl bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] text-white font-bold hover:shadow-xl hover:shadow-[#ff0066]/30 transition-all duration-300">
+                    <button className="px-5 py-2.5 rounded-xl bg-linear-to-r from-emerald-600 to-yellow-600 text-white font-medium hover:from-emerald-500 hover:to-yellow-500 transition-all duration-300">
                       Discover More
                     </button>
                   </div>
@@ -508,33 +486,27 @@ const LikedPost: React.FC = () => {
           </div>
         ) : (
           // Empty State
-          <div className="relative overflow-hidden bg-linear-to-br from-gray-900/40 to-gray-900/20 backdrop-blur-xl rounded-3xl p-12 text-center border border-gray-800/50 shadow-2xl shadow-black/30">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff]"></div>
+          <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-2xl p-8 text-center border border-gray-800/50">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div>
 
             <div className="max-w-md mx-auto">
-              <div className="relative inline-block mb-8">
-                <div className="w-32 h-32 rounded-full bg-linear-to-br from-[#ff1a1a]/10 via-[#ff0066]/10 to-[#ff00ff]/10 flex items-center justify-center mx-auto">
-                  <BookmarkBorderIcon
-                    sx={{ fontSize: "64px", color: "#4b5563" }}
-                  />
-                </div>
-                <div className="absolute -top-2 -right-2 w-12 h-12 rounded-full bg-linear-to-br from-yellow-500 to-orange-500 flex items-center justify-center shadow-lg">
-                  <StarIcon sx={{ fontSize: "20px", color: "white" }} />
-                </div>
+              <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
+                <BookmarkIcon
+                  sx={{ fontSize: "40px", color: "#4b5563" }}
+                />
               </div>
-              <h3 className="text-3xl font-bold text-gray-100 mb-4">
-                Curate Your Collection
+              <h3 className="text-xl font-bold text-gray-100 mb-3">
+                No Liked Posts Yet
               </h3>
-              <p className="text-gray-400 mb-8 text-lg">
-                Start building your elite collection by liking premium content
-                from top creators
+              <p className="text-gray-400 mb-6">
+                Start building your collection by liking posts from creators
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-3.5 rounded-2xl bg-linear-to-r from-[#ff1a1a] via-[#ff0066] to-[#ff00ff] text-white font-bold hover:shadow-xl hover:shadow-[#ff0066]/30 transition-all duration-300">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <button className="px-5 py-3 rounded-xl bg-linear-to-r from-emerald-600 to-yellow-600 text-white font-medium hover:from-emerald-500 hover:to-yellow-500 transition-all duration-300">
                   Explore Trending
                 </button>
-                <button className="px-8 py-3.5 rounded-2xl bg-linear-to-b from-gray-900/60 to-gray-900/30 border border-gray-800/50 text-gray-300 hover:text-gray-100 hover:border-[#ff0066]/30 transition-all duration-300 font-bold">
-                  Follow Elite Creators
+                <button className="px-5 py-3 rounded-xl bg-gray-900/60 border border-gray-800/50 text-gray-300 hover:text-gray-100 hover:border-emerald-500/30 transition-all duration-300 font-medium">
+                  Follow Creators
                 </button>
               </div>
             </div>
