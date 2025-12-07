@@ -353,7 +353,7 @@ const MyPosts: React.FC = () => {
             {/* Stats Cards */}
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
               <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 border border-gray-800/50">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div>
+                {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
                 <p className="text-xs text-gray-400 mb-2">Total Posts</p>
                 <div className="flex items-center justify-between">
                   <p className="text-xl font-bold text-emerald-400">
@@ -366,7 +366,7 @@ const MyPosts: React.FC = () => {
               </div>
 
               <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 border border-gray-800/50">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div>
+                {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
                 <p className="text-xs text-gray-400 mb-2">Published</p>
                 <div className="flex items-center justify-between">
                   <p className="text-xl font-bold text-yellow-400">
@@ -379,7 +379,7 @@ const MyPosts: React.FC = () => {
               </div>
 
               <div className="relative overflow-hidden bg-gray-900/80 backdrop-blur-sm rounded-xl p-4 border border-gray-800/50">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div>
+                {/* <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 via-yellow-500 to-emerald-400"></div> */}
                 <p className="text-xs text-gray-400 mb-2">Total Views</p>
                 <div className="flex items-center justify-between">
                   <p className="text-xl font-bold text-emerald-400">
